@@ -1,7 +1,10 @@
-@media all and (min-width: 250px) {
+@media all and (min-width: 250px) and (min-height: 350px) {
 
     html *{
-        font-family: 'Shippori Mincho B1', serif;
+        font-family: 'PT Mono', monospace;
+    }
+    body{
+        background-image: url("../media/background.png");
     }
         .sidebar{
             position: absolute;
@@ -18,12 +21,13 @@
             padding-left: 25%;
             padding-top: 20%;
             margin: auto;
+            cursor: pointer;
         }
 
         .topbar{
             position: absolute;
             width:97%;
-            height: 5%;
+            height: 7%;
             right:0%;
             top:0%;
             background-color: #121212;
@@ -83,11 +87,28 @@
             margin-left: 50px;
         }
 
-    /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-    #main {
-        transition: margin-left .5s;
-        padding: 20px;
-    }
+        /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+        #info {
+            position: absolute;
+            transition: 0.5s;
+            height: 400px;
+            width: 1490px;
+            top: 8%;
+            left: 3%;
+        }
+        
+        #login{
+            opacity: 80%;
+            background-color: white;
+            width: 30%;
+            height: 40%;
+            top: 50%;
+            position: relative;
+            margin: 0 auto;
+        }
+        #login input{
+            margin: 0 auto;
+                }
 
 @media all and (max-width: 450px){
     #content{
