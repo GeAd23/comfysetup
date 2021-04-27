@@ -93,7 +93,7 @@
             transition: 0.5s;
             height: 400px;
             width: 1490px;
-            top: 8%;
+            top: 7%;
             left: 3%;
         }
         
@@ -109,7 +109,12 @@
         #login input{
             margin: 0 auto;
                 }
-
+        
+        .sidenav .haltdeinefressejulien{
+            color: #818181;
+            font-size: 15px;
+            text-indent: 10px;
+        }
 @media all and (max-width: 450px){
     #content{
         display: none;

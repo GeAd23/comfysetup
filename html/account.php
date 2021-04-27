@@ -23,11 +23,16 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 </head>
 
 <body>    
-    <div id="mySidenav" class="sidenav">
+    <div id="side_nav" class="sidenav">
         <!--Inhalt der Navigationsleiste-->
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="./index.php">Home</a><br>
         <a href="./account.php">Konto</a><br>
+            <a class="haltdeinefressejulien" href="">Programm Liste</a><br>
+            <a class="haltdeinefressejulien" href="">Profil Liste</a><br>
+            <a class="haltdeinefressejulien" href="">Profil erstellen</a><br>
+            <a class="haltdeinefressejulien" href="">Programm hinzufügem</a><br>
+            <a class="haltdeinefressejulien" href="">Konto bearbeiten</a><br>
         <a href="./about.php">About</a><br>
         <a href="./help.php">Help</a>
     </div>
@@ -40,7 +45,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <a href=./index.php id="logo"><img src="./media/icons/logo.png" alt="Logo"></a>
     </div>
     
-    <div id="main">
+    <div id="info">
+
     </div>
 
 

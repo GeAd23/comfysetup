@@ -1,6 +1,6 @@
 import sqlite3
 import sys
-import requests
+import urllib3
 from validators import URL
 
 arg_list=sys.argv[1:]
@@ -18,4 +18,3 @@ def getSoftware(arg_list):
         return prg_info
 
 def checkCustomURL(url):
-    
