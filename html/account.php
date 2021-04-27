@@ -31,7 +31,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             <a class="haltdeinefressejulien" href="">Programm Liste</a><br>
             <a class="haltdeinefressejulien" href="">Profil Liste</a><br>
             <a class="haltdeinefressejulien" href="">Profil erstellen</a><br>
-            <a class="haltdeinefressejulien" href="">Programm hinzufügem</a><br>
+            <a class="haltdeinefressejulien" href="">Programm hinzufügen</a><br>
             <a class="haltdeinefressejulien" href="">Konto bearbeiten</a><br>
         <a href="./about.php">About</a><br>
         <a href="./help.php">Help</a>
