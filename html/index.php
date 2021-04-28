@@ -3,7 +3,6 @@ session_start();
 if($_SESSION["timer"]+1800 <= time())
 {
     ?>
-        <script type="text/javascript">document.getElementsByClassName('haltdeinefressejulien').style.display = 'block';</script>
         <script type="text/javascript">document.getElementsByClassName('logout').style.display = 'block';</script>
         <script type="text/javascript">document.getElementsByClassName('login').style.display = 'none';</script>
     <?php
@@ -11,7 +10,6 @@ if($_SESSION["timer"]+1800 <= time())
 else
 {
     ?>
-        <script type="text/javascript">document.getElementByClassName('haltdeinefressejulien').style.display = 'none';</script>
         <script type="text/javascript">document.getElementByClassName('login').style.display = 'block';</script>
         <script type="text/javascript">document.getElementsByClassName('logout').style.display = 'none';</script>
     <?php
@@ -45,11 +43,6 @@ else
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="./index.php">Home</a><br>
         <a href="./account.php">Konto</a><br>
-            <a class="haltdeinefressejulien" href="">Programm Liste</a><br>
-            <a class="haltdeinefressejulien" href="">Profil Liste</a><br>
-            <a class="haltdeinefressejulien" href="">Profil erstellen</a><br>
-            <a class="haltdeinefressejulien" href="">Programm hinzufügen</a><br>
-            <a class="haltdeinefressejulien" href="">Konto bearbeiten</a><br>
         <a href="./about.php">About</a><br>
         <a href="./help.php">Help</a>
         <a class="login" href="login1.php">Login</a>
