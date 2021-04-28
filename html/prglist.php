@@ -46,6 +46,7 @@ else
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--Own stylesheet-->
 <link rel="stylesheet" href="./stylesheets/light.css">
+<link rel="stylesheet" href="./stylesheets/div_Liste.css"
 <!--Fonts-->
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;700&display=swap" rel="stylesheet">
