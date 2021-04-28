@@ -1,10 +1,12 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', true);
-$user = $_POST["user"];
+if(isset($_POST['user'])) { 
+	$user = $_POST['user'];
+}
 $db = new SQLite3("/var/www/data/MS1.db");
-$query = $db->prepare("Select * from users where username = ?;");
-$query->bindParam(1, '$user');
+$query = $db->prepare("Select * from users where username = :1;");
+$query->bindParam(':1', $user);
 $userlogin = $query->execute();
 $userdata = $userlogin->fetchArray();
 if(count($userdata) == 0)
@@ -15,9 +17,11 @@ if(count($userdata) == 0)
 }
 $db->close();
 
-$passwort = $_POST["passwd"];
+if(isset($_POST['passwd'])) { 
+	$passwort = $_POST['passwd'];
+}
 $phash = $userdata["password_crypt"];
-if(password_hash($passwort, PASSWORD_DEFAULT) == $phash)
+f(password_hash($passwort, PASSWORD_DEFAULT) == $phash)
 {
 	if(password_verify($passwort,$phash))
 	{
