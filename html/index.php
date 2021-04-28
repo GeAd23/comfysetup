@@ -1,3 +1,19 @@
+<?php
+session_start();
+if($_SESSION["timer"]+1800 <= time())
+{
+    ?>
+    <script type="text/javascript">document.getElementsByClassName('haltdeinefressejulien').style.display = 'none';</script>
+    <?php
+}
+else
+{
+    ?>
+        <script type="text/javascript">document.getElementById('divId').style.display = 'block';</script>
+    <?php
+}
+?>
+
 <!DOCTYPE html>
 <html de>
 
