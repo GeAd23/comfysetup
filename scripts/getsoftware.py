@@ -17,4 +17,3 @@ def getSoftware(arg_list):
         conn.close()
         return prg_info
 
-def checkCustomURL(url):

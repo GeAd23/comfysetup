@@ -56,8 +56,8 @@ else
     <div id="info" class="info">
         <div id="login">
             <form method="post" action="./logintest.php">
-                <input type=textbox id="username" placeholder="E-Mail"><br>
-                <input type=password id="passwd" placeholder="Password"><br>
+                <input type=textbox id="user" name="user" placeholder="E-Mail"><br>
+                <input type=password id="passwd" name="passwd" placeholder="Password"><br>
                 <input type=submit class="submit" id="submit" value="Anmelden">
             </form>
         </div>
