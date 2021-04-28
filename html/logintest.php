@@ -29,9 +29,9 @@ f(password_hash($passwort, PASSWORD_DEFAULT) == $phash)
 			{
 			$phash = password_hash($passwort, PASSWORD_DEFAULT);
 			$db = new SQLite3("/var/www/data/MS1.db");
-			$query = $db->prepare("Update users SET password_crypt = ? Where username = ?;");
-			$query->bindParam(1, '$phash');
-			$query->bindParam(2, '$user');
+			$query = $db->prepare("Update users SET password_crypt = :1 Where username = :2;");
+			$query->bindParam(':1', $phash);
+			$query->bindParam(':2', $user);
 			$query->execute();
 			$db->close();
 		}
