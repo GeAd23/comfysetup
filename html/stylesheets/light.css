@@ -86,8 +86,13 @@
             font-size: 36px;
             margin-left: 50px;
         }
+        
+        .sidenav .haltdeinefressejulien{
+            color: #818181;
+            font-size: 15px;
+            text-indent: 10px;
+        }
 
-        /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
         #info {
             position: absolute;
             transition: 0.5s;
@@ -98,23 +103,53 @@
         }
         
         #login{
-            opacity: 80%;
-            background-color: white;
+            opacity: 60%;
+            background-color: #121212;
             width: 30%;
-            height: 40%;
+            height: 50%;
             top: 50%;
             position: relative;
             margin: 0 auto;
+            border-radius: 5px;
         }
-        #login input{
+        #login form{
             margin: 0 auto;
+            position: relative;
+            padding-top: 10px;
+            padding-left: 40px;
                 }
         
-        .sidenav .haltdeinefressejulien{
+        #login input{
+            border: 1px solid;
+            border-radius: 5px;
+            font-size: 20px;
+            width: 90%;
+            height: 40px;
+            margin: 10px 0;
+            background-color: #121212;
+            border-color:#818181;
             color: #818181;
-            font-size: 15px;
-            text-indent: 10px;
         }
+        #login input:hover{
+            color: white;
+            border-color: white;
+        }
+
+        #login input[type=submit]{
+            background-color: #a23d74;
+            color: white;
+            border-radius: 5px;
+            border-color: #818181;
+
+        }
+
+        #login input[type=submit]:hover{
+            background-color: #b54481;
+            border-color: white;
+            font-size: 20px;           
+
+        }
+
 @media all and (max-width: 450px){
     #content{
         display: none;

@@ -39,8 +39,11 @@
     
     <div id="info" class="info">
         <div id="login">
-            <input type=textbox id="username" placeholder="Username/E-Mail">
-            <input type=password id="password" placeholder="Password">
+            <form method="post" action="./logintest.php">
+                <input type=textbox id="user" placeholder="Username/E-Mail"><br>
+                <input type=password id="passwd" placeholder="Password"><br>
+                <input type=submit class="submit" id="submit" value="Anmelden">
+            </form>
         </div>
     </div>
 
