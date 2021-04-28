@@ -8,7 +8,7 @@ if(!(isset($_SESSION["timer"])))
     exit();
 }
 if(isset($_SESSION["timer"])){
-if($_SESSION["timer"]+1800 <= time())
+if($_SESSION["timer"]+1800 >= time())
 {
 	if($_SESSION["username"] != "")
 	{	
@@ -93,7 +93,8 @@ else
         <div id="usrprglist">
         <?php
         $proarray = shell_exec((escapeshellcmd('/var/www/scripts/getprglist.py')));
-        $i = 1;
+        echo $proarray;
+	$i = 1;
         echo '<script language="javascript" type="text/javascript">';
         echo 'var deactivate = false;';
         echo '</script>';
