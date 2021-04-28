@@ -3,16 +3,17 @@ session_start();
 if($_SESSION["timer"]+1800 <= time())
 {
     ?>
-    <script type="text/javascript">document.getElementsByClassName('haltdeinefressejulien').style.display = 'none';</script>
+    <script type="text/javascript">document.getElementsByClassName('haltdeinefressejulien').style.display = 'block';</script>
     <?php
 }
 else
 {
     ?>
-        <script type="text/javascript">document.getElementById('divId').style.display = 'block';</script>
+        <script type="text/javascript">document.getElementByClassName('haltdeinefressejulien').style.display = 'none';</script>
     <?php
 }
 ?>
+
 <!DOCTYPE html>
 <html de>
 
