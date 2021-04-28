@@ -1,13 +1,4 @@
-<?php
-// Initialize the session
-session_start();
- 
-// Check if the user is logged in, if not then redirect him to login page
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: login.php");
-    exit;
-}
-?>
+
 <!DOCTYPE html>
 <html de>
 
@@ -27,7 +18,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <!--Inhalt der Navigationsleiste-->
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="./index.php">Home</a><br>
-        <a href="./account.php">Konto</a><br>
+        <a>Konto</a><br>
             <a class="haltdeinefressejulien" href="">Programm Liste</a><br>
             <a class="haltdeinefressejulien" href="">Profil Liste</a><br>
             <a class="haltdeinefressejulien" href="">Profil erstellen</a><br>

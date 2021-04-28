@@ -1,9 +1,9 @@
 <?php
 error_reporting(E_ALL);
-$login = false;
+$login = true;
 if($login == true)
 {
-    header("location: div_Liste.php");
+    header("location: account.php");
     exit();
 }
 else

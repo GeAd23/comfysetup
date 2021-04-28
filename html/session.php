@@ -1,6 +1,6 @@
 <?php
 session_start();
-if($_SESSION["timer"] <= time()+1800)
+if($_SESSION["timer"]+1800 <= time())
 {
 	if($_SESSION["username"] != "")
 	{	
@@ -26,7 +26,7 @@ else
 }
 ?>
 <?php
-$db = new SQLite3("msp.db");
+$db = new SQLite3("/var/www/data/MS1.db");
 $query = $db->prepare("Select * from users where name = ?;");
 $query->bindParam(1, '$user');
 $userlogin = $query->execute();
@@ -44,7 +44,7 @@ $db->close();
 ?>
 
 <?php
-	$passwort =$_POST["passwd"];
+	$passwort = $_POST["passwd"];
 	$phash = $userdata["passwort"];
 	if(password_hash($passwort, PASSWORD_DEFAULT) == $phash)
 	{
@@ -53,7 +53,7 @@ $db->close();
 			if(password_needs_rehash($phash, PASSWORD_DEFAULT))
 			{
 				$phash = password_hash($passwort, PASSWORD_DEFAULT);
-				$db = new SQLite3("msp.db");
+				$db = new SQLite3("/var/www/data/MS1.db");
 				$query = $db->prepare("Update users SET passwort = ? Where name = ?;");
 				$query->bindParam(1, '$phash');
 				$query->bindParam(2, '$user');
