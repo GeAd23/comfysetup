@@ -1,31 +1,3 @@
-<?php
-session_start();
-if($_SESSION["timer"]+1800 <= time())
-{
-	if($_SESSION["username"] != "")
-	{	
-		if($_SESSION["admin"] == true)
-		{
-			$_SESSION["timer"] = time();
-			
-		}
-		else
-		{
-			$_SESSION["timer"] = time();
-			
-		}
-	}
-	else
-	{
-		include logout.php;
-	}
-}
-else
-{
-	include logout.php;
-}
-?>
-
 <!DOCTYPE html>
 <html de>
 
