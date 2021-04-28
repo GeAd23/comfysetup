@@ -25,7 +25,7 @@ else
 	include logout.php;
 }
 
-$proarray = array();
+$proarray = shell_exec((escapeshellcmd('/var/www/scripts/getprglist.py')));
 $i = 1;
 echo '<script language="javascript" type="text/javascript">';
 echo 'var deactivate = false;';

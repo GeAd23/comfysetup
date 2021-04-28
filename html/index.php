@@ -37,7 +37,7 @@ session_start()
             }
             else
             {
-                echo '<a class="login" href="login1.php">Login</a>';
+                echo '<a class="log_in" href="login1.php">Login</a>';
             }
         ?>    
     </div>

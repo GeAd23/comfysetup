@@ -27,6 +27,16 @@
             <a class="haltdeinefressejulien" href="">Konto bearbeiten</a><br>
         <a href="./about.php">About</a><br>
         <a href="./help.php">Help</a>
+        <?php
+        if(isset($_SESSION["timer"]))
+            {
+                echo '<a class="logout" href="logout.php">Logout</a>';
+            }
+            else
+            {
+                echo '<a class="log_in" href="login1.php">Login</a>';
+            }
+        ?> 
     </div>
 
     <div id="side_bar" class="sidebar">
@@ -37,7 +47,7 @@
         <a href=./index.php id="logo"><img src="./media/icons/logo.png" alt="Logo"></a>
     </div>
     
-    <div id="main">
+    <div id="info">
     </div>
 
 

@@ -3,14 +3,14 @@ import sys
 
 arg_list=sys.argv[1:]
 
-def download(name, urls: list):
+def download(urls: list):
     for url in urls:
         print(f'Downloading {url}')
         try:
             http = urllib3.PoolManager()
             r = http.request('GET', url, preload_content=False)
 
-            with open(name+'.exe', 'w+') as out:
+            with open('/usb/data1/'+url[:15], 'w+') as out:
                 while True:
                     data = r.read(4096)
                     if not data:
