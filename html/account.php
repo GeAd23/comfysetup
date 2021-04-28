@@ -1,11 +1,12 @@
 <?php
 session_start();
-if($_SESSION["timer"]+1800 <= time())
+if($_SESSION["timer"] == 0)
 {
     header("location: login1.php");
     exit();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html de>
@@ -34,6 +35,12 @@ if($_SESSION["timer"]+1800 <= time())
             <a class="haltdeinefressejulien" href="">Konto bearbeiten</a><br>
         <a href="./about.php">About</a><br>
         <a href="./help.php">Help</a>
+        <?php
+            if($_SESSION["timer"] != 0)
+            {
+                echo '<a class="logout" href="logout.php">Logout</a>'
+            }
+        ?>
     </div>
 
     <div id="side_bar" class="sidebar">

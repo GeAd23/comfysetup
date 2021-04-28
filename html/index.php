@@ -1,17 +1,5 @@
 <?php
-session_start();
-if($_SESSION["timer"]+1800 <= time())
-{
-    ?>
-    <script type="text/javascript">document.getElementsByClassName('haltdeinefressejulien').style.display = 'block';</script>
-    <?php
-}
-else
-{
-    ?>
-        <script type="text/javascript">document.getElementByClassName('haltdeinefressejulien').style.display = 'none';</script>
-    <?php
-}
+session_start()
 ?>
 
 <!DOCTYPE html>
@@ -40,15 +28,19 @@ else
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="./index.php">Home</a><br>
         <a href="./account.php">Konto</a><br>
-            <a class="haltdeinefressejulien" href="">Programm Liste</a><br>
-            <a class="haltdeinefressejulien" href="">Profil Liste</a><br>
-            <a class="haltdeinefressejulien" href="">Profil erstellen</a><br>
-            <a class="haltdeinefressejulien" href="">Programm hinzufügen</a><br>
-            <a class="haltdeinefressejulien" href="">Konto bearbeiten</a><br>
         <a href="./about.php">About</a><br>
         <a href="./help.php">Help</a>
+        <?php
+            if($_SESSION["timer"] != 0)
+            {
+                echo '<a class="logout" href="logout.php">Logout</a>'
+            }
+            else
+            {
+                echo '<a class="login" href="login1.php">Login</a>'
+            }
+        ?>
     </div>
-
     <div id="side_bar" class="sidebar">
         <span onclick='openNav(); removeSide();'><img src="https://img.icons8.com/ios-filled/50/ffffff/menu--v1.png" alt="Menu"></span>
     </div>

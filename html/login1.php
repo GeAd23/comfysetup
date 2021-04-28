@@ -1,19 +1,3 @@
-<?php
-session_start();
-if($_SESSION["timer"]+1800 <= time())
-{
-    ?>
-    <script type="text/javascript">document.getElementsByClassName('haltdeinefressejulien').style.display = 'block';</script>
-    <?php
-}
-else
-{
-    ?>
-        <script type="text/javascript">document.getElementByClassName('haltdeinefressejulien').style.display = 'none';</script>
-    <?php
-}
-?>
-
 <!DOCTYPE html>
 <html de>
 
@@ -36,11 +20,6 @@ else
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="./index.php">Home</a><br>
         <a href="./account.php">Konto</a><br>
-            <a class="haltdeinefressejulien" href="">Programm Liste</a><br>
-            <a class="haltdeinefressejulien" href="">Profil Liste</a><br>
-            <a class="haltdeinefressejulien" href="">Profil erstellen</a><br>
-            <a class="haltdeinefressejulien" href="">Programm hinzufügen</a><br>
-            <a class="haltdeinefressejulien" href="">Konto bearbeiten</a><br>
         <a href="./about.php">About</a><br>
         <a href="./help.php">Help</a>
     </div>
