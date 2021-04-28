@@ -29,7 +29,7 @@ if(!(isset($_SESSION["timer"])))
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="./index.php">Home</a><br>
         <a>Konto</a><br>
-            <a class="haltdeinefressejulien" href="">Programm Liste</a><br>
+            <a class="haltdeinefressejulien" href="prglist.php">Programm Liste</a><br>
             <a class="haltdeinefressejulien" href="">Profil Liste</a><br>
             <a class="haltdeinefressejulien" href="">Profil erstellen</a><br>
             <a class="haltdeinefressejulien" href="">Programm hinzufügen</a><br>
