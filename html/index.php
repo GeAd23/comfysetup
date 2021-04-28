@@ -30,15 +30,6 @@ session_start()
         <a href="./account.php">Konto</a><br>
         <a href="./about.php">About</a><br>
         <a href="./help.php">Help</a>       
-
-    </div>
-    <div id="side_bar" class="sidebar">
-        <span onclick='openNav(); removeSide();'><img src="https://img.icons8.com/ios-filled/50/ffffff/menu--v1.png" alt="Menu"></span>
-    </div>
-    
-    <div id="top_bar" class="topbar">
-        <a href="./index.php" id="logo"><img src="./media/icons/logo.png" alt="Logo"></a>
-    </div>
         <?php
 	    if(isset($_SESSION["timer"]))
             {
@@ -49,6 +40,15 @@ session_start()
                 echo '<a class="login" href="login1.php">Login</a>';
             }
         ?>    
+    </div>
+    <div id="side_bar" class="sidebar">
+        <span onclick='openNav(); removeSide();'><img src="https://img.icons8.com/ios-filled/50/ffffff/menu--v1.png" alt="Menu"></span>
+    </div>
+    
+    <div id="top_bar" class="topbar">
+        <a href="./index.php" id="logo"><img src="./media/icons/logo.png" alt="Logo"></a>
+    </div>
+
     <div id="info" class="info">
         <div>
 
