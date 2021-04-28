@@ -36,9 +36,9 @@ if($_SESSION["timer"] == 0)
         <a href="./about.php">About</a><br>
         <a href="./help.php">Help</a>
         <?php
-            if($_SESSION["timer"] != 0)
+            if (isset($_SESSION["timer"]))
             {
-                echo '<a class="logout" href="logout.php">Logout</a>'
+                echo '<a class="logout" href="logout.php">Logout</a>';
             }
         ?>
     </div>

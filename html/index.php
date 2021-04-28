@@ -29,17 +29,8 @@ session_start()
         <a href="./index.php">Home</a><br>
         <a href="./account.php">Konto</a><br>
         <a href="./about.php">About</a><br>
-        <a href="./help.php">Help</a>
-        <?php
-            if($_SESSION["timer"] != 0)
-            {
-                echo '<a class="logout" href="logout.php">Logout</a>'
-            }
-            else
-            {
-                echo '<a class="login" href="login1.php">Login</a>'
-            }
-        ?>
+        <a href="./help.php">Help</a>       
+
     </div>
     <div id="side_bar" class="sidebar">
         <span onclick='openNav(); removeSide();'><img src="https://img.icons8.com/ios-filled/50/ffffff/menu--v1.png" alt="Menu"></span>
@@ -48,7 +39,16 @@ session_start()
     <div id="top_bar" class="topbar">
         <a href="./index.php" id="logo"><img src="./media/icons/logo.png" alt="Logo"></a>
     </div>
-    
+        <?php
+	    if(isset($_SESSION["timer"]))
+            {
+                echo '<a class="logout" href="logout.php">Logout</a>';
+            }
+            else
+            {
+                echo '<a class="login" href="login1.php">Login</a>';
+            }
+        ?>    
     <div id="info" class="info">
         <div>
 
