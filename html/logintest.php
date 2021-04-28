@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL);
 $user = $_POST["user"];
 $db = new SQLite3("/var/www/data/MS1.db");
 $query = $db->prepare("Select * from users where username = ?;");
