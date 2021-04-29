@@ -187,7 +187,7 @@ else
             
             }';
             echo '</script>';
-            echo '<div onclick="programm_bearbeitenD'.$i.'()" id="'.$item[1].'" class="programm">
+            echo '<div onclick="programm_bearbeitenD'.$i.'()" id="'.$item[1].'" class="profile">
             <p id="inhalt">
             <b>'.$item[1].'</b>&nbsp;&nbsp;&nbsp;'.$item[2].'&nbsp;&nbsp;&nbsp;
             <button onclick="programm_aktuell'.$i.'()" id="'.$item[1].'">

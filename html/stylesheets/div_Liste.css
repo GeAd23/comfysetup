@@ -3,7 +3,19 @@
     border-width: 3px;
     border-style: solid;
     height: auto;
-    width: 900px;
+    width: 870px;
+    margin: 0 auto;
+    text-align: left;
+    margin-bottom: 6px;
+    margin-top: 3px;
+}
+
+.profile{
+    border-radius: 20px;
+    border-width: 3px;
+    border-style: solid;
+    height: auto;
+    width: 790px;
     margin: 0 auto;
     text-align: left;
     margin-bottom: 6px;
