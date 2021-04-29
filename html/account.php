@@ -30,9 +30,9 @@ if(!(isset($_SESSION["timer"])))
         <a href="./index.php">Home</a><br>
         <a>Konto</a><br>
             <a class="haltdeinefressejulien" href="prglist.php">Programm Liste</a><br>
-            <a class="haltdeinefressejulien" href="">Profil Liste</a><br>
+            <a class="haltdeinefressejulien" href="prolist.php">Profil Liste</a><br>
             <a class="haltdeinefressejulien" href="">Profil erstellen</a><br>
-            <a class="haltdeinefressejulien" href="">Programm hinzufügen</a><br>
+            <a class="haltdeinefressejulien" href="prgadd.php">Programm hinzufügen</a><br>
             <a class="haltdeinefressejulien" href="">Konto bearbeiten</a><br>
         <a href="./about.php">About</a><br>
         <a href="./help.php">Help</a>

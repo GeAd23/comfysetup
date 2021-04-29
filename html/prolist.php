@@ -92,7 +92,7 @@ else
     <div id="info">
         <div id="usrprglist">
         <?php
-        $proarray = shell_exec((escapeshellcmd('/var/www/scripts/getprglist.py')));
+        $proarray = shell_exec((escapeshellcmd('/var/www/scripts/getprolist.py')));
 	$programme = explode(",",$proarray);
 	$i=0;
 	$j=0;
@@ -189,7 +189,7 @@ else
             echo '</script>';
             echo '<div onclick="programm_bearbeitenD'.$i.'()" id="'.$item[1].'" class="programm">
             <p id="inhalt">
-            <img src="'.$item[4].'" class="pbild">&nbsp;&nbsp;&nbsp;<b>'.$item[1].'</b>&nbsp;&nbsp;&nbsp;'.$item[7].'&nbsp;&nbsp;&nbsp;
+            <b>'.$item[1].'</b>&nbsp;&nbsp;&nbsp;'.$item[2].'&nbsp;&nbsp;&nbsp;
             <button onclick="programm_aktuell'.$i.'()" id="'.$item[1].'">
             Aktuell
             </button>

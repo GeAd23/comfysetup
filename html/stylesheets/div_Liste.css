@@ -3,10 +3,11 @@
     border-width: 3px;
     border-style: solid;
     height: auto;
-    width: 550px;
+    width: 900px;
     margin: 0 auto;
     text-align: left;
     margin-bottom: 6px;
+    margin-top: 3px;
 }
 
 #inhalt{
@@ -18,4 +19,9 @@
 
 .d2{
     text-align: center;
+}
+
+.pbild{
+    width: 40px;
+    height: 40px;
 }
