@@ -1,0 +1,21 @@
+.programm{
+    border-radius: 20px;
+    border-width: 3px;
+    border-style: solid;
+    height: auto;
+    width: 550px;
+    margin: 0 auto;
+    text-align: left;
+    margin-bottom: 6px;
+}
+
+#inhalt{
+    padding: 2px;
+    margin-right: 4px;
+    margin-left: 4px;
+    text-align: left;
+}
+
+.d2{
+    text-align: center;
+}

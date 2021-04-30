@@ -65,7 +65,7 @@ else
             <a class="haltdeinefressejulien" href="prolist.php">Profil Liste</a><br>
             <a class="haltdeinefressejulien" href="">Profil erstellen</a><br>
             <a class="haltdeinefressejulien" href="prgadd.php">Programm hinzufügen</a><br>
-            <a class="haltdeinefressejulien" href="">Konto bearbeiten</a><br>
+            <a class="haltdeinefressejulien" href="kontoch.php">Konto bearbeiten</a><br>
         <a href="./about.php">About</a><br>
         <a href="./help.php">Help</a>
         <?php
@@ -90,15 +90,6 @@ else
 
 	<div id="info">
 		<div id="prgadd">
-			<script language="javascript" type="text/javascript">
-			    var upico = document.getElementById("pico");
-			    upico.onchange = function(){
-				if(this.files[0].size > 6291456){
-				    alert("Das Bild ist zu groß!");
-				    this.value = "";
-				}
-			    }
-			</script>
 			<form action="account.php" method="post" enctype="multipart/form-data">
 			    <input id="addbutton" type="submit" value="Speichern">
 			    <div id="padd"><br>
@@ -124,6 +115,15 @@ else
 			    <br><br></div>
 			    <input id="addbutton" type="submit" value="Speichern">
 			</form>
+			<script language="javascript" type="text/javascript">
+                            var upico = document.getElementById("pico");
+                            upico.onchange = function(){
+                                if(this.files[0].size > 6291456){
+                                    alert("Das Bild ist zu groß!");
+                                    this.value = "";
+                                }
+                            }
+                        </script>
 		</div>
 	</div>
 

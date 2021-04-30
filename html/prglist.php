@@ -66,7 +66,7 @@ else
             <a class="haltdeinefressejulien" href="prolist.php">Profil Liste</a><br>
             <a class="haltdeinefressejulien" href="">Profil erstellen</a><br>
             <a class="haltdeinefressejulien" href="prgadd.php">Programm hinzufügen</a><br>
-            <a class="haltdeinefressejulien" href="">Konto bearbeiten</a><br>
+            <a class="haltdeinefressejulien" href="kontoch.php">Konto bearbeiten</a><br>
         <a href="./about.php">About</a><br>
         <a href="./help.php">Help</a>
         <?php
@@ -184,7 +184,17 @@ else
             function programm_loeschen'.$i.'(){
                 deactivate = true;
                 var name = '.$item[1].';
-            
+		var xhttp;
+		xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function () {
+		if (this.readyState == 4 && this.status == 200) {
+			result = xhttp.responseText;
+			location.reload();
+		}
+		};
+		xhttp.open("POST", "account.php", true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send("aprg=delprg&bprg='.$item[1].'");            
             }';
 	    $time = date("d.m.Y G:i:s",intval($item[7]));
             echo '</script>';

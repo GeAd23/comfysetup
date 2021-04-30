@@ -5,6 +5,36 @@ if(!(isset($_SESSION["timer"])))
     header("location: login1.php");
     exit();
 }
+if(isset($_SESSION["timer"])){
+if($_SESSION["timer"]+1800 >= time())
+{
+	if($_SESSION["username"] != "")
+	{	
+		if($_SESSION["admin"] == true)
+		{
+			$_SESSION["timer"] = time();
+			
+		}
+		else
+		{
+			$_SESSION["timer"] = time();
+			
+		}
+	}
+	else
+	{
+		include logout.php;
+	}
+}
+else
+{
+	include logout.php;
+}
+}
+else
+{
+    include logout.php;
+}
 ?>
 
 
@@ -33,7 +63,7 @@ if(!(isset($_SESSION["timer"])))
             <a class="haltdeinefressejulien" href="prolist.php">Profil Liste</a><br>
             <a class="haltdeinefressejulien" href="">Profil erstellen</a><br>
             <a class="haltdeinefressejulien" href="prgadd.php">Programm hinzufügen</a><br>
-            <a class="haltdeinefressejulien" href="">Konto bearbeiten</a><br>
+            <a class="haltdeinefressejulien" href="kontoch.php">Konto bearbeiten</a><br>
         <a href="./about.php">About</a><br>
         <a href="./help.php">Help</a>
         <?php
@@ -89,6 +119,10 @@ if(!(isset($_SESSION["timer"])))
 			$auto = true;
 		}
 	}
+	else
+	{
+		$auto = false;
+	}
 	if(isset($_POST["pstandard"]))
 	{
 		$stand = $_POST["pstandard"];
@@ -100,6 +134,10 @@ if(!(isset($_SESSION["timer"])))
 		{
 			$stand = true;
 		}
+	}
+	else
+	{
+		$stand = false;
 	}
 	if(isset($_FILES["bilddatei"]))
     	{
@@ -115,15 +153,81 @@ if(!(isset($_SESSION["timer"])))
     	}
     
     	if(isset($name))
-    	{
+    	{	
 		$time = time();
 		$sqlarray = array(Null, $name, $url, "/usb/".$lurl, "icos/".$bildname, $stand, "Win", $time,"normal", $auto);
-		//$proarray = shell_exec((escapeshellcmd('/var/www/scripts/setprg.py '.$sqlarray)));
+		$sqlarray = json_encode($sqlarray);
+		$proarray = shell_exec((escapeshellcmd('/var/www/scripts/setprg.py '.$sqlarray)));
 		echo "<center>".$proarray."<center>";
     	}
 ?>
 	</div>
-    </div>
+    	<div id="kontoinfo">
+<?php
+        if(isset($_POST["kname"]))
+        {
+                $name = $_POST["kname"];
+        }
+        if(isset($_POST["uname"]))
+        {
+                $uname = $_POST["uname"];
+        }
+        if(isset($_POST["oldpw"]))
+        {
+                $pass = $_POST["oldpw"];
+        }
+        if(isset($_POST["newpw"]))
+        {
+                $npass = $_POST["newpw"];
+        }
+        if(isset($_POST["newpww"]))
+        {
+                $nnpass = $_POST["newpww"];
+	}
+        if(isset($kname))
+        {
+		$pass = password_hash($pass);
+                $db = new SQLite3("/var/www/data/MS1.db");
+                $query = $db->prepare("Select * from users where username = '".$_SESSION["username"]."';");
+                $userlogin = $query->execute();
+                $userdata = $userlogin->fetchArray();
+                $db->close();
+                if($userdata["password_crypt"] == $pass)
+                {
+			if($npass == $nnpass && $npass != "" && $nnpass != "")
+			{	
+				$pass = password_hash($npass);
+				$sqlarray = array($kname, $uname, $pass);
+			}
+			else
+			{
+				$sqlarray = array($kname, $uname, $pass);
+			}
+		}
+		$sqlarray = json_encode($sqlarray);
+                //$proarray = shell_exec((escapeshellcmd('/var/www/scripts/chkonto.py '.$sqlarray)));
+                echo "<center>".$proarray."<center>";
+        }
+?>
+	</div>
+   	<div id="prgdel">
+<?php
+		if(isset($_POST["aprg"]))
+		{
+			$prgdel1 = $_POST["aprg"];
+		}
+		if(isset($_POST["bprg"]))
+		{
+			$prgdel2 = $_POST["bprg"];
+		}
+		if(isset($prgdel1))
+		{
+			//$proarray = shell_exec((escapeshellcmd('/var/www/scripts/delprg.py '.$prgdel2)));
+                	echo "<center>".$proarray."<center>";
+		}
+?>
+	</div> 
+   </div>
 
 
 </body>
