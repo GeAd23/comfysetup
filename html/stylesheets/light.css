@@ -150,6 +150,14 @@
             font-size: 20px;           
 
         }
+        
+        #usrprglist{
+            background-color: #121212;
+            opacity: 60%;
+            border-radius: 5px;
+             
+        }
+            
 
 @media all and (max-width: 450px){
     #content{

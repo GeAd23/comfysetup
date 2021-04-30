@@ -54,6 +54,14 @@ if(!(isset($_SESSION["timer"])))
     
     <div id="info">
 	<div id="infos">
+<?php
+	$infof = fopen("/var/www/data/infos.txt", "r");
+	while(!feof($infof))
+	{
+		echo "<center>".fgets($infof)."</center>";
+	}
+	fclose(infof);
+?>
 	</div>
     	<div id="prg_create">
 <?php
@@ -99,14 +107,19 @@ if(!(isset($_SESSION["timer"])))
         	$extens = strtolower(pathinfo($bildname, PATHINFO_EXTENSION));
         	$bildname = $name.".".$extens;
        		$bild = $_FILES["bilddatei"]["tmp_name"];
+		while(file_exists("/var/www/html/icos/".$bildname))
+		{
+			$bildname = $name.random_int(1, 99999).".".$extens;
+		}
         	move_uploaded_file($bild, "/var/www/html/icos/".$bildname);
     	}
     
     	if(isset($name))
     	{
-		$sqlarray = array(Null, $name, $url, "/usb/".$lurl, "icos/".$bildname, $stand, "Win", "normal", $auto);
-		//$proarray = shell_exec((escapeshellcmd('/var/www/scripts/getprolist.py')));
-		echo $proarray;
+		$time = time();
+		$sqlarray = array(Null, $name, $url, "/usb/".$lurl, "icos/".$bildname, $stand, "Win", $time,"normal", $auto);
+		//$proarray = shell_exec((escapeshellcmd('/var/www/scripts/setprg.py '.$sqlarray)));
+		echo "<center>".$proarray."<center>";
     	}
 ?>
 	</div>

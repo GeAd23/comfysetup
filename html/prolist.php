@@ -186,10 +186,11 @@ else
                 var name = '.$item[1].';
             
             }';
+	    $time = date("d.m.Y G:i:s",intval($item[2]));
             echo '</script>';
             echo '<div onclick="programm_bearbeitenD'.$i.'()" id="'.$item[1].'" class="profile">
             <p id="inhalt">
-            <b>'.$item[1].'</b>&nbsp;&nbsp;&nbsp;'.$item[2].'&nbsp;&nbsp;&nbsp;
+            <b>'.$item[1].'</b>&nbsp;&nbsp;&nbsp;'.$time.'&nbsp;&nbsp;&nbsp;
             <button onclick="programm_aktuell'.$i.'()" id="'.$item[1].'">
             Aktuell
             </button>
