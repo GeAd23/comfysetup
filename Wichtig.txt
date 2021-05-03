@@ -1,0 +1,1 @@
+Einige leere Ordner wurden per git nicht übertragen. Diese müssen auf dem Raspberry Pi später allerdings exsistieren. (Zur Not manuell erstellen.)
