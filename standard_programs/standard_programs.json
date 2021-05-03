@@ -1,0 +1,92 @@
+{
+        "browser":[
+        {
+            "name": "firefox",
+            "silent_switch": "-ms"
+        },
+        {
+            "name": "chrome",
+            "silent_switch": "MsiExec.exe /i googlechromestandaloneenterprise.msi /qn"
+        },
+        {
+            "name": "brave",
+            "silent_switch": "--install --silent --system-level"
+        }
+    ],
+        "collaboration": [
+        {
+            "name": "discord",
+            "silent_switch": "-s"
+        },
+        {
+            "name": "zoom",
+            "silent_switch": "MsiExec.exe /i ZoomInstallerFull.msi /qn"
+        },
+        {
+            "name": "microsoft teams",
+            "silent_switch": "-s"
+        },
+        {
+            "name": "thunderbird",
+            "silent_switch": "-ms"
+        }
+        ],
+        "utility": [
+            {
+                "name": "7zip",
+                "silent_switch": "/S"
+            },
+            {
+                "name": "vs code",
+                "silent_switch": "/VERYSILENT /NORESTART /MERGETASKS=!runcode"
+            },
+            {
+                "name": "notepad++",
+                "silent_switch": "/S"
+            },
+            {
+                "name": "team viewer",
+                "silent_switch": "/S"
+            },
+            {
+                "name": "gimp",
+                "silent_switch": "/VERYSILENT /NORESTART /ALLUSERS"
+            },
+            {
+                "name": "malwarebytes",
+                "silent_switch": "/VERYSILENT /NORESTART"
+            },
+            {
+                "name": "paint.net",
+                "silent_switch": "/auto"
+            }
+        ],
+        "entertainment": [
+            {
+                "name": "steam",
+                "silent_switch": "/S"
+            },
+            {
+                "name": "vlc",
+                "silent_switch": "/S"
+            },
+            {
+                "name": "spotify",
+                "silent_switch": "/SILENT"
+            },
+            {
+                "name": "audacity",
+                "silent_switch": "/VERYSILENT /NORESTART"
+            }
+        ],
+        "storage": [
+            {
+                "name": "dropbox",
+                "silent_switch": "/NOLAUNCH"
+            },
+            {
+                "name": "google backup and sync",
+                "silent_switch": "MsiExec.exe /i gsync_enterprise.msi ALLUSERS=1 REBOOT=ReallySuppress /qn"
+            }
+        ]
+}
