@@ -1,4 +1,0 @@
-sqlite3
-ftplib
-auto-py-to-exe
-validators

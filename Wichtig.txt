@@ -1,3 +1,3 @@
-Einige leere Ordner wurden per git nicht übertragen. Diese müssen auf dem Raspberry Pi später allerdings exsistieren. (Zur Not manuell erstellen.)
+Einige Ordner müssen auf dem Raspberry Pi später allerdings exsistieren. (Zur Not manuell erstellen.)
 Die Linux Rechte nicht vergessen anzupassen. 
-https://www.foxplex.com/sites/raspberry-pi-als-ftp-server-mit-proftpd/
+https://www.foxplex.com/sites/raspberry-pi-als-ftp-server-mit-proftpd/   ProFTPd
