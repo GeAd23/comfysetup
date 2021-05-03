@@ -61,7 +61,7 @@ else
         <!--Inhalt der Navigationsleiste-->
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="./index.php">Home</a><br>
-        <a href="./account.php">Konto</a><br>
+        <a>Konto</a><br>
             <a class="haltdeinefressejulien" href="prglist.php">Programm Liste</a><br>
             <a class="haltdeinefressejulien" href="prolist.php">Profil Liste</a><br>
             <a class="haltdeinefressejulien" href="">Profil erstellen</a><br>
@@ -155,7 +155,17 @@ else
                 if(deactivate == false)
                 {
                         var name = '.$item[1].';
-                
+						var xhttp;
+						xhttp = new XMLHttpRequest();
+						xhttp.onreadystatechange = function () {
+						if (this.readyState == 4 && this.status == 200) {
+							result = xhttp.responseText;
+							document.getElementById("info").innerHTML = result;
+						}
+						};
+						xhttp.open("POST", "getproinhalt.php", true);
+						xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+						xhttp.send("proinhalt='.$item[1].'");
                 }
                 else
                 {
@@ -184,7 +194,17 @@ else
             function programm_loeschen'.$i.'(){
                 deactivate = true;
                 var name = '.$item[1].';
-            
+				var xhttp;
+				xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function () {
+				if (this.readyState == 4 && this.status == 200) {
+					result = xhttp.responseText;
+					location.reload();
+				}
+				};
+				xhttp.open("POST", "account.php", true);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send("aprg=delpro&bpro='.$item[1].'");
             }';
 	    $time = date("d.m.Y G:i:s",intval($item[2]));
             echo '</script>';

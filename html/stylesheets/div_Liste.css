@@ -22,6 +22,18 @@
     margin-top: 3px;
 }
 
+.proinhalt{
+    border-radius: 20px;
+    border-width: 3px;
+    border-style: solid;
+    height: auto;
+    width: 530px;
+    margin: 0 auto;
+    text-align: left;
+    margin-bottom: 6px;
+    margin-top: 3px;
+}
+
 #inhalt{
     padding: 2px;
     margin-right: 4px;

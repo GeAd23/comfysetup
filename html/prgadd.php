@@ -60,7 +60,7 @@ else
         <!--Inhalt der Navigationsleiste-->
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="./index.php">Home</a><br>
-        <a href="./account.php">Konto</a><br>
+        <a>Konto</a><br>
             <a class="haltdeinefressejulien" href="prglist.php">Programm Liste</a><br>
             <a class="haltdeinefressejulien" href="prolist.php">Profil Liste</a><br>
             <a class="haltdeinefressejulien" href="">Profil erstellen</a><br>
@@ -110,7 +110,7 @@ else
 			    </label>
 			    <label>
 				<input type="checkbox" name="pstandard" value="pstandard" checked>
-				Ist ein Standard Programm von "comfysetup" (Nur kleine Dateien)
+				Ist ein Standard Programm von "comfysetup" (Nur kleinere Dateien)
 			    </label>
 			    <br><br></div>
 			    <input id="addbutton" type="submit" value="Speichern">

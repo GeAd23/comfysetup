@@ -83,6 +83,7 @@ else
     </div>
     
     <div id="info">
+	<p><center>Hier werden Fehler angezeigt, wenn welche aufgetreten sind beim verarbeiten.</center></p>
 	<div id="infos">
 <?php
 	$infof = fopen("/var/www/data/infos.txt", "r");
@@ -93,7 +94,16 @@ else
 	fclose(infof);
 ?>
 	</div>
-    	<div id="prg_create">
+	<div id="downloadlink">
+<?php
+	
+	if(isset($_POST["prgdown"]))
+	{
+		echo '<a href='.$downloadlink.' alt='.$downloadname.' download><button id="downloadb">Download Windows Installer</button><a/>';
+	}
+?>
+	</div>
+    <div id="prg_create">
 <?php
 	if(isset($_POST["pname"]))
 	{
@@ -194,18 +204,18 @@ else
                 $db->close();
                 if($userdata["password_crypt"] == $pass)
                 {
-			if($npass == $nnpass && $npass != "" && $nnpass != "")
-			{	
-				$pass = password_hash($npass);
-				$sqlarray = array($kname, $uname, $pass);
-			}
-			else
-			{
-				$sqlarray = array($kname, $uname, $pass);
-			}
-		}
-		$sqlarray = json_encode($sqlarray);
-                //$proarray = shell_exec((escapeshellcmd('/var/www/scripts/chkonto.py '.$sqlarray)));
+					if($npass == $nnpass && $npass != "" && $nnpass != "")
+					{	
+						$pass = password_hash($npass);
+						$sqlarray = array($kname, $uname, $pass);
+					}
+					else
+					{
+						$sqlarray = array($kname, $uname, $pass);
+					}
+				}
+				$sqlarray = json_encode($sqlarray);
+                $proarray = shell_exec((escapeshellcmd('/var/www/scripts/chkonto.py '.$sqlarray)));
                 echo "<center>".$proarray."<center>";
         }
 ?>
@@ -222,8 +232,25 @@ else
 		}
 		if(isset($prgdel1))
 		{
-			//$proarray = shell_exec((escapeshellcmd('/var/www/scripts/delprg.py '.$prgdel2)));
-                	echo "<center>".$proarray."<center>";
+			$proarray = shell_exec((escapeshellcmd('/var/www/scripts/delprg.py '.$prgdel2)));
+            echo "<center>".$proarray."<center>";
+		}
+?>
+	</div> 
+	<div id="prodel">
+<?php
+		if(isset($_POST["apro"]))
+		{
+			$prodel1 = $_POST["apro"];
+		}
+		if(isset($_POST["bpro"]))
+		{
+			$prodel2 = $_POST["bpro"];
+		}
+		if(isset($prodel1))
+		{
+			$proarray = shell_exec((escapeshellcmd('/var/www/scripts/delpro.py '.$prodel2)));
+            echo "<center>".$proarray."<center>";
 		}
 ?>
 	</div> 

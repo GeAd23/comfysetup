@@ -1,4 +1,5 @@
 import time;
+import sys;
 import random;
 import string;
 import shutil;
@@ -27,7 +28,7 @@ class prepareTemplate:
         return name;
 
     def copy_template(self, name): #Standard Template kopieren mit neuen Namen
-        shutil.copy2("C://Users//werner_j//Documents//PYGS//template1.py", "C://Users//werner_j//Documents//PYGS//" + name, follow_symlinks = True);
+        shutil.copy2("/var/www/scripts/prepareinstallSoftwareWin.py", "/var/www/html/installpy/" + name, follow_symlinks = True);
 
     def prepare_template(self, templatefile): #Das dynamische Template öffnen und anpassen
         tfile = open(templatefile, "r+");
@@ -40,9 +41,9 @@ class prepareTemplate:
     
     def create_exe(self, name):
         #Windows
-        created = subprocess.call(["cmd", "/c", "pyinstaller", "--noconfirm", "--onefile", "--console", "--icon", "C://Users//werner_j//Downloads//software_install.ico", "--distpath", "C://Users//werner_j//Desktop", "C://Users//werner_j//Desktop//" + name]);
+        #created = subprocess.call(["cmd", "/c", "pyinstaller", "--noconfirm", "--onefile", "--console", "--icon", "C://Users//werner_j//Downloads//software_install.ico", "--distpath", "C://Users//werner_j//Desktop", "C://Users//werner_j//Desktop//" + name]);
         #Linux
-        created = subprocess.call("pyinstaller --noconfirm --onefile --console --icon C:/Users/werner_j/Downloads/software_install.ico --distpath C:/Users/werner_j/Desktop C:/Users/werner_j/Desktop/" + name, shell=True);        
+        created = subprocess.call("pyinstaller --noconfirm --onefile --console --icon /var/www/scripts/software_install.ico --distpath /var/www/html/installpy/" + name, shell=True);        
         if(created == 0):
             print("Das dynamische Template wurde erfolgreich erzeugt.\n");
         else:
@@ -59,6 +60,11 @@ class prepareTemplate:
         loeschung = subprocess.call("sudo rm -rf /var/www/test/__pycache__/", shell=True);        
 
 
+programme = sys.argv[1];
+programme = programme.split(",");
+programm = [];
+for item in programme:
+    programm.append([item,"false"]);
 createdynTemplate1 = prepareTemplate(); 
 nametemplate = createdynTemplate1.get_randomized_name(20);
 
@@ -69,4 +75,3 @@ createdynTemplate1.setsoftware('[["testen.exe", "false"], ["toll//fertiges.exe",
 createdynTemplate1.prepare_template("C://Users//werner_j//Documents//PYGS//" + nametemplate);
 #Die dynamische Template py zu exe umwandeln
 createdynTemplate1.create_exe(nametemplate);
- 

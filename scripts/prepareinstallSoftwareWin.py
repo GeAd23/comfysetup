@@ -8,8 +8,8 @@ class dynTemplate:
     startnow = False;
     programs = [["1", "1"]];
     automatic_stepdata = [["2", "2"]];
-    programs = [["testen.exe", "false"], ["toll//fertiges.exe", "false"]]; #Debug
-    automatic_stepdata = [["Ppfad 1", "/S"], ["Ppfad 1", "/S"]];
+    #programs = [["testen.exe", "false"], ["toll//fertiges.exe", "false"]]; #Debug
+    #automatic_stepdata = [["Ppfad 1", "/S"], ["Ppfad 1", "/S"]];
 
     def startinstallmanager(self):
         startwahl = True; #Installation starten
@@ -32,8 +32,8 @@ class dynTemplate:
 
 
             try:
-                #ftp = ftplib.FTP("localhost", "progdown", "1234567890");
-                ftp = ftplib.FTP("speedtest.tele2.net"); #Debug
+                ftp = ftplib.FTP("localhost", "progdown", "1234567890");
+                #ftp = ftplib.FTP("speedtest.tele2.net"); #Debug
                 self.log = ftp.login();
                 print(self.log + "\n");
             except:
@@ -62,13 +62,13 @@ class dynTemplate:
                     temptarget = temptarget.split("\\");
                     temptarget = temptarget[(len(temptarget)-1)];
                     operation = temptarget;
-                    print(operation); #Debug
+                    #print(operation); #Debug
                     print("Quelle : " + os.path.join(downloadfolder, operationsource));
 
                     try:
                         downfile = open(os.path.join(downloadfolder, operation), 'wb');
-                        #downloadcomplete = ftp.retrbinary('RETR ' + os.path.join(downloadfolder, operation), downfile.write);
-                        downloadcomplete = ftp.retrbinary('RETR ' + "20MB.zip", downfile.write); #Debug
+                        downloadcomplete = ftp.retrbinary('RETR ' + os.path.join(downloadfolder, operation), downfile.write);
+                        #downloadcomplete = ftp.retrbinary('RETR ' + "20MB.zip", downfile.write); #Debug
                         if not("226 Transfer complete." in downloadcomplete):
                             if(os.path.isfile(os.path.join(downloadfolder, operation))):
                                 os.remove(os.path.join(downloadfolder, operation));
@@ -102,8 +102,8 @@ class dynTemplate:
                     if(os.path.isfile(os.path.join(downloadfolder, operation))):
                         if(automatic == "false"):
                             try:
-                                #programmauftrag = subprocess.Popen(os.path.join(downloadfolder, operation), shell=True);
-                                programmauftrag = subprocess.Popen(os.path.join(downloadfolder, "E1.doc"), shell=True); #Debug
+                                programmauftrag = subprocess.Popen(os.path.join(downloadfolder, operation), shell=True);
+                                #programmauftrag = subprocess.Popen(os.path.join(downloadfolder, "E1.doc"), shell=True); #Debug
                                 try:
                                     programmauftrag.wait(180.0);
                                     if(programmauftrag == 0):
@@ -125,7 +125,7 @@ class dynTemplate:
                                     silentsteps = step[1];
                                     try:
                                         #programmauftrag = subprocess.Popen("C://Users//werner_j//Desktop//7z2100-x64.exe" + " " + silentsteps, shell=True); #Debug
-                                        #programmauftrag = subprocess.Popen(os.path.join(downloadfolder, operationsource + " " + silentsteps), shell=True);
+                                        programmauftrag = subprocess.Popen(os.path.join(downloadfolder, operationsource + " " + silentsteps), shell=True);
                                         try:
                                             programmauftrag.wait(180.0);
                                             if(programmauftrag == 0):
