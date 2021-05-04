@@ -182,7 +182,18 @@ else
             function programm_download'.$i.'(){
                 deactivate = true;
                 var name = '.$item[1].';
-            
+				var xhttp;
+				xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function () {
+				if (this.readyState == 4 && this.status == 200) {
+					result = xhttp.responseText;
+					result = "account.php?dlink=result";
+					window.location.replace(result);
+				}
+				};
+				xhttp.open("POST", "createdlink.php", true);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send("apro=true&bpro='.$item[1].'");
             }
             
             function programm_bearbeiten'.$i.'(){

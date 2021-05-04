@@ -1,10 +1,49 @@
 <?php
-		if(isset($_POST["proinhalt"]))
+error_reporting(E_ALL);
+ini_set('display_errors', true);
+session_start();
+if(!(isset($_SESSION["timer"])))
+{
+    header("location: login1.php");
+    exit();
+}
+if(isset($_SESSION["timer"])){
+if($_SESSION["timer"]+1800 >= time())
+{
+	if($_SESSION["username"] != "")
+	{	
+		if($_SESSION["admin"] == true)
 		{
-			$proinhalt = $_POST["proinhalt"];
+			$_SESSION["timer"] = time();
+			
 		}
+		else
+		{
+			$_SESSION["timer"] = time();
+			
+		}
+	}
+	else
+	{
+		include logout.php;
+	}
+}
+else
+{
+	include logout.php;
+}
+}
+else
+{
+    include logout.php;
+}
 
-echo '<div id="proinhalt">
+	if(isset($_POST["proinhalt"]))
+	{
+		$proinhalt = $_POST["proinhalt"];
+	}
+
+	echo '<div id="proinhalt">
 	<button onclick="window.location.replace("prolist.php")" id="'.$proinhalt.'">
     Zurück
     </button>&nbsp;&nbsp;&nbsp;

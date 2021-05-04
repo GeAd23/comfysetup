@@ -6,7 +6,7 @@ import subprocess;
 class dynTemplate:
     log="000";
     startnow = False;
-    programs = [["1", "1"]];
+    programs = [['1', '1']];
     automatic_stepdata = [["2", "2"]];
     #programs = [["testen.exe", "false"], ["toll//fertiges.exe", "false"]]; #Debug
     #automatic_stepdata = [["Ppfad 1", "/S"], ["Ppfad 1", "/S"]];

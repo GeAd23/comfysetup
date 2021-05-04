@@ -83,7 +83,7 @@ else
     </div>
     
     <div id="info">
-	<p><center>Hier werden Fehler angezeigt, wenn welche aufgetreten sind beim verarbeiten.</center></p>
+	<br><p><center>Hier werden Fehler angezeigt, wenn welche aufgetreten sind beim verarbeiten.</center></p><br><br>
 	<div id="infos">
 <?php
 	$infof = fopen("/var/www/data/infos.txt", "r");
@@ -96,9 +96,10 @@ else
 	</div>
 	<div id="downloadlink">
 <?php
-	
-	if(isset($_POST["prgdown"]))
+	if(isset($_GET["dlink"]))
 	{
+		$downloadlink = "/installpy/".$_GET["dlink"]."exe";
+		$downloadname = $_GET["dlink"];
 		echo '<a href='.$downloadlink.' alt='.$downloadname.' download><button id="downloadb">Download Windows Installer</button><a/>';
 	}
 ?>

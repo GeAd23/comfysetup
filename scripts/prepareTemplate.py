@@ -1,5 +1,6 @@
 import time;
 import sys;
+import os;
 import random;
 import string;
 import shutil;
@@ -45,33 +46,39 @@ class prepareTemplate:
         #Linux
         created = subprocess.call("pyinstaller --noconfirm --onefile --console --icon /var/www/scripts/software_install.ico --distpath /var/www/html/installpy/" + name, shell=True);        
         if(created == 0):
+            os.remove("/var/www/html/installpy/" + name);
             print("Das dynamische Template wurde erfolgreich erzeugt.\n");
         else:
             print("Die Erzeugung ist fehlgeschlagen. Informieren sie ihren Administrator.\n");
         name1 = name.split(".");
         name1 = name1[0];
         #Windows
-        loeschung = subprocess.call(["cmd", "/c", "del", "/Q", "C:\\Users\\werner_j\\Desktop\\" + name1 + ".spec"]);
-        loeschung = subprocess.call(["cmd", "/c", "rmdir", "/S", "/Q", "C:\\Users\\werner_j\\Desktop\\build"]);
-        loeschung = subprocess.call(["cmd", "/c", "rmdir", "/S", "/Q", "C:\\Users\\werner_j\\Desktop\\__pycache__"]);
+        #loeschung = subprocess.call(["cmd", "/c", "del", "/Q", "C:\\Users\\werner_j\\Desktop\\" + name1 + ".spec"]);
+        #loeschung = subprocess.call(["cmd", "/c", "rmdir", "/S", "/Q", "C:\\Users\\werner_j\\Desktop\\build"]);
+        #loeschung = subprocess.call(["cmd", "/c", "rmdir", "/S", "/Q", "C:\\Users\\werner_j\\Desktop\\__pycache__"]);
         #Linux
-        loeschung = subprocess.call("sudo rm -rf /var/www/test/" + name1 + ".spec", shell=True);
-        loeschung = subprocess.call("sudo rm -rf /var/www/test/build/", shell=True);
-        loeschung = subprocess.call("sudo rm -rf /var/www/test/__pycache__/", shell=True);        
+        loeschung = subprocess.call("sudo rm -rf /var/www/html/installpy/" + name1 + ".spec", shell=True);
+        loeschung = subprocess.call("sudo rm -rf /var/www/html/installpy/build/", shell=True);
+        loeschung = subprocess.call("sudo rm -rf /var/www/html/installpy/__pycache__/", shell=True);        
 
+    def get_installerName(self, name):
+        print(name);
+        return(name);
 
 programme = sys.argv[1];
 programme = programme.split(",");
 programm = [];
 for item in programme:
     programm.append([item,"false"]);
+programm = str(programm);
 createdynTemplate1 = prepareTemplate(); 
 nametemplate = createdynTemplate1.get_randomized_name(20);
 
 print(nametemplate);
 createdynTemplate1.copy_template(nametemplate);
 createdynTemplate1.setautoinstall('[["Ppfad 1", "/S"], ["Ppfad 1", "/S"]]');
-createdynTemplate1.setsoftware('[["testen.exe", "false"], ["toll//fertiges.exe", "false"]]');
-createdynTemplate1.prepare_template("C://Users//werner_j//Documents//PYGS//" + nametemplate);
+createdynTemplate1.setsoftware(programm);
+createdynTemplate1.prepare_template("/var/www/html/installpy/" + nametemplate);
 #Die dynamische Template py zu exe umwandeln
 createdynTemplate1.create_exe(nametemplate);
+createdynTemplate1.get_installerName(nametemplate);

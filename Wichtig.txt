@@ -1,3 +1,3 @@
 Einige Ordner müssen auf dem Raspberry Pi später allerdings exsistieren. (Zur Not manuell erstellen.)
-Die Linux Rechte nicht vergessen anzupassen. 
+Die Linux Rechte nicht vergessen anzupassen. cronjob einstellen für den Ordner (installpy).
 https://www.foxplex.com/sites/raspberry-pi-als-ftp-server-mit-proftpd/   ProFTPd
