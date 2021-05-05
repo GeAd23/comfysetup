@@ -1,10 +1,11 @@
 import sqlite3 as sql
 import sys
+import json
+import downloadown
 
 db_conn=sql.connect('/var/www/data/MS1.db', timeout=20)
-arg_list=sys.argv[1]
-arg_list=arg_list.replace("(", "")
-arg_list=arg_list.replace(")", "")
+arg_list=sys.argv[1:]
+url = [json.dump(arg_list)[1]]
 
 def setprg(arg_list):
     conn = db_conn
@@ -15,3 +16,4 @@ def setprg(arg_list):
     conn.close()
 
 setprg(arg_list)
+downloadown.download(url)
