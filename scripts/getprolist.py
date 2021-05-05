@@ -9,6 +9,8 @@ def getprolist():
     c=conn.cursor()
     c.execute(f"SELECT * FROM profile")
     pro_array = c.fetchall()
+    db_conn.commit()
+    db_conn.close()
     print(pro_array);
     return pro_array
 

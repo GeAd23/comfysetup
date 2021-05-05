@@ -205,8 +205,14 @@ else
 			$query = $db->prepare("SELECT last_insert_rowid();");
 			$userlogin = $query->execute();
 			$userdata = $userlogin->fetchArray();
-			$db->close();
 			$iddata = intval($userdata["last_insert_rowid()"]);
+			$query = $db->prepare("SELECT * from users where username = '".$_SESSION["username"]."';");
+			$userlogin = $query->execute();
+			$userdata = $userlogin->fetchArray();
+			$query = $db->prepare("INSERT INTO user_profile (ID,user,profil) VALUES (NULL,'".$userdata["UID"]."','".$iddata."');");
+			$userlogin = $query->execute();
+			$db->close();
+			
 			if(isset($_POST["anz_items"]))
 			{
 					$i_anzahl = intval($_POST["anz_items"]);

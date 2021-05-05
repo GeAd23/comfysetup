@@ -9,6 +9,8 @@ def getprglist():
     c=conn.cursor()
     c.execute(f"SELECT * FROM programm")
     prg_array = c.fetchall()
+    db_conn.commit()
+    db_conn.close()
     print(prg_array);
     return prg_array
 
