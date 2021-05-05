@@ -60,7 +60,7 @@ else
         <!--Inhalt der Navigationsleiste-->
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="./index.php">Home</a><br>
-        <a href="./account.php">Konto</a><br>
+        <a>Konto</a><br>
             <a class="haltdeinefressejulien" href="prglist.php">Programm Liste</a><br>
             <a class="haltdeinefressejulien" href="prolist.php">Profil Liste</a><br>
             <a class="haltdeinefressejulien" href="proadd.php">Profil erstellen</a><br>
@@ -89,22 +89,82 @@ else
     </div>
 
 	<div id="info">
-		<div id="prgadd">
-			<form action="account.php" method="post">
+		<div id="proadd">
+			<form action="account.php" method="post" enctype="multipart/form-data">
 			    <input id="addbutton" type="submit" value="Speichern">
 			    <div id="padd"><br>
-			    <?php
-				$db = new SQLite3("/var/www/data/MS1.db");
-				$query = $db->prepare("Select * from users where username = '".$_SESSION["username"]."';");
-				$userlogin = $query->execute();
-				$userdata = $userlogin->fetchArray();
-			    echo '<input type="text" id="kname" name="kname" size="30" placeholder="Name" value="'.$userdata["name"].'"><br><br><br>';
-			    echo '<input type="text" id="uname" name="uname" size="30" placeholder="Username" value="'.$userdata["username"].'" required><br><br><br>';
-			    echo '<input type="text" id="oldpw" name="oldpw" size="30" placeholder="Old Passwort" required><br>';
-			    echo '<input type="text" id="newpw" name="newpw" size="30" placeholder="New Passwort"><br>';
-			    echo '<input type="text" id="newpww" name="newpww" size="30" placeholder="New Passwort wiederholen">';
-				$db->close();
-			    ?>
+			    <input type="text" id="poname" name="poname" size="30" placeholder="Profilname" required><br><br><br>
+			    <br><br><br>
+				<p id="erklärung_auswahl">Wählen sie alle Programme aus, die zu diesem Profil hinzugefügt werden sollen.</p><br><br>
+				<div id="programme">
+<?php
+				$proarray = shell_exec((escapeshellcmd('/var/www/scripts/getprglist.py')));
+				$programme = explode(",",$proarray);
+				$programme0 = array();
+				$i=0;
+				$j=0;
+				foreach($programme as &$prog)
+				{
+					$pro1 = explode("[(",$prog);
+							if(count($pro1) > 1)
+							{
+									$programme0[$j][$i] = $pro1[1];
+					}
+					if(strpos($prog,"')]") != "")
+							{       
+									$pro1 = explode("')]",$prog);
+									$programme0[$j][$i] = $pro1[0];
+							}
+					elseif(strpos($prog,")]") != "")
+					{	
+						$pro1 = explode(")]",$prog);
+						$programme0[$j][$i] = $pro1[0];
+					}
+					elseif(strpos($prog,"[('") != "") 
+							{
+									$pro1 = explode("[('",$prog);
+									$programme0[$j][$i] = $pro1[1];
+							}
+					elseif(strpos($prog,"[(") != "") 
+						{
+									$pro1 = explode("[(",$prog);
+									$programme0[$j][$i] = $pro1[1];
+						echo $pro1[1];
+							}
+					elseif(strpos($prog,")") != "") 
+							{
+									$pro1 = explode(")",$prog);
+									$programme0[$j][$i] = $pro1[0];
+									$j = $j+1;
+							}
+					elseif(strpos($prog,"(") != "") 
+							{
+									$pro1 = explode("(",$prog);
+									$programme0[$j][$i] = $pro1[1];
+							}
+					if(strpos($prog,"'") != "")
+					{
+						$pro1 = explode("'",$prog);
+						$programme0[$j][$i] = $pro1[1];
+					}
+
+					$i = $i+1;
+				}
+				unset($pro1);
+				unset($programme);
+				$i = 1;
+				foreach($programme0 as &$item)
+				{
+					$time = date("d.m.Y G:i:s",intval($item[7]));
+					echo '<div id="'.$item[1].'" class="prginhalt">';
+					echo '&nbsp;&nbsp;&nbsp;<input type="checkbox" name="prg'.$i.'" value="'.$item[0].'">&nbsp;';
+					echo '<img src="'.$item[4].'" class="pbild">&nbsp;&nbsp;&nbsp;<b>'.$item[1].'</b>&nbsp;&nbsp;&nbsp;'.$time.'&nbsp;&nbsp;&nbsp;';
+					echo '</div>';
+					$i = $i + 1;
+				}
+				echo '<br><input style="visibility:hidden" type="number" name="anz_items" size="5" value='.$i.' required>';
+?>
+				</div>
 			    <br><br></div>
 			    <input id="addbutton" type="submit" value="Speichern">
 			</form>

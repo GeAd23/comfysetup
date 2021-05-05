@@ -64,7 +64,7 @@ else
         <a>Konto</a><br>
             <a class="haltdeinefressejulien" href="prglist.php">Programm Liste</a><br>
             <a class="haltdeinefressejulien" href="prolist.php">Profil Liste</a><br>
-            <a class="haltdeinefressejulien" href="">Profil erstellen</a><br>
+            <a class="haltdeinefressejulien" href="proadd.php">Profil erstellen</a><br>
             <a class="haltdeinefressejulien" href="prgadd.php">Programm hinzufügen</a><br>
             <a class="haltdeinefressejulien" href="kontoch.php">Konto bearbeiten</a><br>
         <a href="./about.php">About</a><br>
