@@ -5,8 +5,8 @@ import math;
 import bcrypt;
 
 def createUser():
-    #db_conn = sqlite3.connect('/var/www/data/MS1.db');
-    db_conn = sqlite3.connect('D:\\msp\\data\\MS1.db'); #Debug
+    db_conn = sqlite3.connect('/var/www/data/MS1.db');
+    #db_conn = sqlite3.connect('D:\\msp\\data\\MS1.db'); #Debug
     c = db_conn.cursor();
     c.execute(f"INSERT INTO users (UID,name,username,password_crypt,admin,active,'exists') VALUES (NULL,'"+name+"','"+username+"','"+passwort+"','"+admin+"','"+active+"','"+time+"');");
     db_conn.commit();
@@ -15,8 +15,8 @@ def createUser():
     return("\nUser \""+username+"\" erfolgreich erstellt.");
 
 def checkUserExists():
-    #db_conn = sqlite3.connect('/var/www/data/MS1.db');
-    db_conn = sqlite3.connect('D:\\msp\\data\\MS1.db'); #Debug
+    db_conn = sqlite3.connect('/var/www/data/MS1.db');
+    #db_conn = sqlite3.connect('D:\\msp\\data\\MS1.db'); #Debug
     c = db_conn.cursor();
     c.execute(f"Select * from users where username = '"+username+"';");
     user_array = c.fetchall();
