@@ -7,6 +7,11 @@ if(!(isset($_SESSION["timer"])))
     header("location: login1.php");
     exit();
 }
+if($_SESSION["admin"] != true)
+{
+	header("location: account.php");
+    exit();
+}
 if(isset($_SESSION["timer"])){
 if($_SESSION["timer"]+1800 >= time())
 {
