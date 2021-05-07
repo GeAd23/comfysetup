@@ -64,6 +64,12 @@ else
             <a class="haltdeinefressejulien" href="proadd.php">Profil erstellen</a><br>
             <a class="haltdeinefressejulien" href="prgadd.php">Programm hinzufügen</a><br>
             <a class="haltdeinefressejulien" href="kontoch.php">Konto bearbeiten</a><br>
+			<?php
+			/*if($_SESSION["admin"] == true)
+			{
+				echo '<a class="haltdeinefressejulien" href="user_verwaltungA.php">Benutzer verwalten</a><br>';
+			}*/
+			?>
         <a href="./about.php">About</a><br>
         <a href="./help.php">Help</a>
         <?php
@@ -323,8 +329,91 @@ else
 		}
 ?>
 	</div> 
+	<div id="adminchangeA">
+<?php
+		if(isset($_POST["anz_uitems"]))
+		{
+			$i_anzahl = intval($_POST["anz_uitems"]);
+			$i = 1;
+			$lochen = array();
+			$userB = array();
+			$adminB = array();
+			$activeB = array();
+			while($i <= $i_anzahl)
+			{
+				if(isset($_POST["loeschA".$i.""]))
+				{
+					$löschU = $_POST["loeschA".$i.""];
+				}
+				else
+				{
+					$löschU = "";
+				}
+				if($löschU != "")
+				{
+					$lochen[] = $löschU;
+				}
+				else
+				{
+					if(isset($_POST["adminA".$i.""]))
+					{
+							$split_data = explode(",", $_POST["adminA".$i.""]);
+							$userB[] = $split_data[0];
+							$adminB[] = true;
+					}
+					else
+					{
+						$split_data = $_POST["uuname".$i.""];
+						$userB[] = $split_data;
+						$adminB[] = false;
+					}
+					if(isset($_POST["activeA".$i.""]))
+					{
+							$split_data = explode(",", $_POST["activeA".$i.""]);
+							if($userB[$i - 1] == $split_data[0])
+							{
+								$activeB[] = true;
+							}
+					}
+					else
+					{
+						$split_data = $_POST["uuname".$i.""];
+						if($userB[$i - 1] == $split_data)
+						{
+							$activeB[] = true;
+						}
+						$activeB[] = false;
+					}
+				}
+				$i = $i + 1;
+			}
+			$i = 0;
+			while($i < count($lochen))
+			{
+				$db = new SQLite3("/var/www/data/MS1.db");
+				$query = $db->prepare("Select * from users WHERE username = '".$lochen[$i]."';");
+				$userchange = $query->execute();
+				$userdata = $userchange->fetchArray();
+				$query = $db->prepare("DELETE from user_profile WHERE user = '".$userdata["UID"]."';");
+				$userchange = $query->execute();
+				$query = $db->prepare("DELETE from users WHERE username = '".$lochen[$i]."';");
+				$userchange = $query->execute();
+				$db->close();
+				$i = $i + 1;
+			}
+			$i = 0;
+			while($i < count($userB))
+			{
+				$db = new SQLite3("/var/www/data/MS1.db");
+				$query = $db->prepare("UPDATE users SET admin = '".$adminB[$i]."', active = '".$activeB[$i]."' WHERE username = '".$userb[$i]."';");
+				$userchange = $query->execute();
+				$db->close();
+				$i = $i + 1;
+			}
+		}
+?>	
+	</div>
    </div>
-
 
 </body>
 

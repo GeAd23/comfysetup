@@ -9,7 +9,7 @@ user = json.dump(arg_list)
 def update_profile(name, username, password):
     conn=db_conn
     c = conn.cursor()
-    c.exceute(f"UPDATE users SET name='{name}', password='{password}' WHERE username='{username}'")
+    c.exceute(f"UPDATE users SET name='{name}', password='{password}' WHERE username='{username}';")
     conn.commit()
     conn.close()
 

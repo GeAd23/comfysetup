@@ -105,8 +105,38 @@ else
 			    <input id="addbutton" type="submit" value="Speichern">
 				<div id="uverwaltung"><br><br><br><br>
 <?php
-				
-				echo '<br><input style="visibility:hidden" type="number" name="anz_items" size="5" value='.$i.' required>';
+				$db = new SQLite3("/var/www/data/MS1.db");
+				$query = $db->prepare("SELECT * from users order by username;");
+				$userlogin = $query->execute();
+				$userdata = $userlogin->fetchArray();
+				$db->close();
+				$i = 1;
+				foreach($userdata as &$uuser)
+				{
+					echo '<div id="'.$uuser[2].'" class="userinhalt">';
+					echo '&nbsp;&nbsp;&nbsp;'.$uuser[1].'&nbsp;&nbsp;&nbsp;'.$uuser[2].'&nbsp;&nbsp;&nbsp;';
+					if($uuser[4] == true)
+					{	
+						echo '<label><input type="checkbox" name="adminA'.$i.'" value="'.$uuser[2].','.$uuser[4].' checked">Adminrechte erlaubt</label>&nbsp;&nbsp;&nbsp;';
+					}
+					elseif($uuser[4] == false)
+					{
+						echo '<label><input type="checkbox" name="adminA'.$i.'" value="'.$uuser[2].','.$uuser[4].'">Adminrechte erlaubt</label>&nbsp;&nbsp;&nbsp;';
+					}
+					if($uuser[5] == true)
+					{	
+						echo '<label><input type="checkbox" name="activeA'.$i.'" value="'.$uuser[2].','.$uuser[5].' checked">Benutzer aktiviert</label>&nbsp;&nbsp;&nbsp;';
+					}
+					elseif($uuser[5] == false)
+					{
+						echo '<label><input type="checkbox" name="activeA'.$i.'" value="'.$uuser[2].','.$uuser[5].'">Benutzer aktiviert</label>&nbsp;&nbsp;&nbsp;';
+					}
+					echo '<label><input type="checkbox" name="loeschA'.$i.'" value="'.$uuser[2].'">Benutzer löschen</label>&nbsp;&nbsp;&nbsp;';
+					echo '<input style="visibility:hidden; width:0px; height:0px;" type="text" name="uuname'.$i.'" size="3" value='.$uuser[2].' required>';
+					echo '</div>';
+					$i = $i + 1;
+				}
+				echo '<br><input style="visibility:hidden" type="number" name="anz_uitems" size="5" value='.$i.' required>';
 ?>
 				</div>
 			    <input id="addbutton" type="submit" value="Speichern">
