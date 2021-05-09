@@ -7,7 +7,7 @@ db_conn = sql.connect('/var/www/data/MS1.db')
 def getprolist():
     conn=db_conn
     c=conn.cursor()
-    c.execute(f"SELECT * FROM profile")
+    c.execute(f"SELECT * FROM profile;")
     pro_array = c.fetchall()
     db_conn.commit()
     db_conn.close()

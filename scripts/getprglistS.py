@@ -7,7 +7,7 @@ db_conn = sql.connect('/var/www/data/MS1.db')
 def getprglist():
     conn=db_conn
     c=conn.cursor()
-    c.execute(f"SELECT * FROM programm where os = 'Win';")
+    c.execute(f"SELECT * FROM programm where os = 'Win' AND standard_P = 'true';")
     prg_array = c.fetchall()
     db_conn.commit()
     db_conn.close()

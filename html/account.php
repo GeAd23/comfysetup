@@ -139,6 +139,10 @@ else
 		{
 			$lurl = $_POST["lurl"];
 		}
+		if(isset($_POST["p_os"]))
+		{
+			$prgos = $_POST["p_os"];
+		}
 		if(isset($_POST["autoi"]))
 		{
 			$auto = $_POST["autoi"];
@@ -187,7 +191,7 @@ else
 			if(isset($name))
 			{	
 			$time = time();
-			$sqlarray = array(NULL, $name, $url, "/usb/".$lurl, "icos/".$bildname, $stand, "Win", $time,"normal", $auto);
+			$sqlarray = array(NULL, $name, $url, "/usb/".$lurl, "icos/".$bildname, $stand, $prgos, $time,"normal", $auto);
 			$sqlarray = json_encode($sqlarray);
 			$proarray = shell_exec((escapeshellcmd('/var/www/scripts/setprg.py '.$sqlarray)));
 			echo "<center>".$proarray."<center>";

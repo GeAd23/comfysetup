@@ -103,14 +103,20 @@ else
 			    <select name="lurl" size="1">
 			    <option value="Data0">Data0</option>
 			    <option value="Data1" selected>Data1</option>
-			    </select><br><br>
-			    </label>
+			    </select>
+			    </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label>Betriebssystem
+			    <select name="p_os" size="1">
+			    <option value="Mac">MacOS</option>
+			    <option value="Win" selected>Windows</option>
+			    </select>
+			    </label><br><br>
 			    <label>
 				<input type="checkbox" name="autoi" value="autoi">
 				Hat einen Autoinstaller
 			    </label>
 			    <label>
-				<input type="checkbox" name="pstandard" value="pstandard" checked>
+				<input type="checkbox" name="pstandard" value="pstandard">
 				Ist ein Standard Programm von "comfysetup" (Nur kleinere Dateien)
 			    </label>
 			    <br><br></div>
