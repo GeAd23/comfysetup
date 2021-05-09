@@ -53,6 +53,30 @@ else
 	<button onclick="programm_download1()" id="'.$proinhalt.'">
     Herunterladen
     </button><br><br><br>';
+	echo '<script language="javascript" type="text/javascript">';
+	echo '	function programm_aktuell'.'1'.'(){
+                deactivate = true;
+                var name = '.$proinhalt.';
+            
+            }
+            
+            function programm_download'.'1'.'(){
+                deactivate = true;
+                var name = '.$proinhalt.';
+				var xhttp;
+				xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function () {
+				if (this.readyState == 4 && this.status == 200) {
+					result = xhttp.responseText;
+					result = "account.php?dlink=result";
+					window.location.replace(result);
+				}
+				};
+				xhttp.open("POST", "createdlink.php", true);
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send("apro=true&bpro='.$proinhalt.'");
+            }';
+	echo '</script>';
 	
 	$db = new SQLite3("/var/www/data/MS1.db");
     $query = $db->prepare("Select * from profile where name = '".$proinhalt."';");

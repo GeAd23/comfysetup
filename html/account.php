@@ -51,6 +51,7 @@ else
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;700&display=swap" rel="stylesheet">
 <!--Navbar js-->
 <script src="./js/nav.js"></script>
+<script src="./js/jquery-3.6.0.js"></script>
 </head>
 
 <body>    
@@ -104,9 +105,16 @@ else
 <?php
 	if(isset($_GET["dlink"]))
 	{
-		$downloadlink = "/installpy/".$_GET["dlink"]."exe";
-		$downloadname = $_GET["dlink"];
-		echo '<a href='.$downloadlink.' alt='.$downloadname.' download><button id="downloadb">Download Windows Installer</button><a/>';
+		if($_GET["dlink"] == "None")
+		{
+			$downloadlink = "/installpy/".$_GET["dlink"]."exe";
+			$downloadname = $_GET["dlink"];
+			echo '<a href='.$downloadlink.' alt='.$downloadname.' download><button id="downloadb">Download Windows Installer</button><a/>'; #CSS muss noch angepasst werden.
+		}
+		else
+		{
+			echo '<center>Es wurden keine Elemente gefunden.<br>Bitte aktualisieren sie die Seite und probieren sie es erneut.</center>';
+		}
 	}
 ?>
 	</div>

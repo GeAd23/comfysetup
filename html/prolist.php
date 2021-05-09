@@ -54,6 +54,7 @@ else
 <link href='https://css.gg/css' rel='stylesheet'>
 <!--Navbar js-->
 <script src="./js/nav.js"></script>
+<script src="./js/jquery-3.6.0.js"></script>
 </head>
 
 <body>    
@@ -176,7 +177,7 @@ else
             function programm_aktuell'.$i.'(){
                 deactivate = true;
                 var name = '.$item[1].';
-            
+				
             }
             
             function programm_download'.$i.'(){
@@ -199,7 +200,7 @@ else
             function programm_bearbeiten'.$i.'(){
                 deactivate = true;
                 var name = '.$item[1].';
-            
+				
             }
             
             function programm_loeschen'.$i.'(){

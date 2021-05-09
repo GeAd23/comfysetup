@@ -51,10 +51,20 @@ else
 				$userlogin = $query->execute();
 				$userdata = $userlogin->fetchArray();
 				$db->close();
-				$lurl = substr($userdata["localurl"], 5);
-				$proarray = shell_exec((escapeshellcmd('/var/www/scripts/prepareTemplate.py '.$lurl)));
-				$name = substr($proarray, 0, -3);
-				echo $name;
+				if(count($userdata) > 0)
+				{
+					$lurl = substr($userdata["localurl"], 5);
+				}
+				if($lurl != "")
+				{
+					$proarray = shell_exec((escapeshellcmd('/var/www/scripts/prepareTemplate.py '.$lurl)));
+					$name = substr($proarray, 0, -3);
+					echo $name;
+				}
+				else
+				{
+					echo "None";
+				}
 		}
 	}
 	
@@ -71,39 +81,49 @@ else
 				$userlogin = $query->execute();
 				$userdata = $userlogin->fetchArray();
 				$db->close();
-				$proid = $userdata["PID"];
-				$db = new SQLite3("/var/www/data/MS1.db");
-				$query = $db->prepare("Select * from profile_programm where profile = '".$proid."';");
-				$userlogin = $query->execute();
-				$userdata = $userlogin->fetchArray();
-				$db->close();
-				$prgliste = array();
-				foreach($userdata as $programm)
+				if(count($userdata) > 0)
 				{
-					$prgliste[] = $programm["programm"];
+					$proid = $userdata["PID"];
+					$db = new SQLite3("/var/www/data/MS1.db");
+					$query = $db->prepare("Select * from profile_programm where profile = '".$proid."';");
+					$userlogin = $query->execute();
+					$userdata = $userlogin->fetchArray();
+					$db->close();
+					$prgliste = array();
+					foreach($userdata as $programm)
+					{
+						$prgliste[] = $programm["programm"];
+					}
+					$querystring = "Select * from programm where ID in (";
+					foreach($prgliste as $prgids)
+					{
+						$querystring = $querystring."'".$prgids."',";
+					}
+					$querystring = substr($querystring, 0, -1);
+					$querystring = $querystring.") ORDER by name;";
+					$db = new SQLite3("/var/www/data/MS1.db");
+					$query = $db->prepare($querystring);
+					$userlogin = $query->execute();
+					$userdata = $userlogin->fetchArray();
+					$db->close();
+					$lurl = "";
+					foreach($userdata as &$item)
+					{
+						$lurl = $lurl.substr($item["localurl"], 5).",";
+					}
 				}
-				$querystring = "Select * from programm where ID in (";
-				foreach($prgliste as $prgids)
+				if($lurl != "")
 				{
-					$querystring = $querystring."'".$prgids."',";
+					$lurl = substr($lurl, 0, -1);
+					
+					$proarray = shell_exec((escapeshellcmd('/var/www/scripts/prepareTemplate.py '.$lurl)));
+					$name = substr($proarray, 0, -3);
+					echo $name;
 				}
-				$querystring = substr($querystring, 0, -1);
-				$querystring = $querystring.") ORDER by name;";
-				$db = new SQLite3("/var/www/data/MS1.db");
-				$query = $db->prepare($querystring);
-				$userlogin = $query->execute();
-				$userdata = $userlogin->fetchArray();
-				$db->close();
-				$lurl = "";
-				foreach($userdata as &$item)
+				else
 				{
-					$lurl = $lurl.substr($item["localurl"], 5).",";
+					echo "None";
 				}
-				$lurl = substr($lurl, 0, -1);
-				
-				$proarray = shell_exec((escapeshellcmd('/var/www/scripts/prepareTemplate.py '.$lurl)));
-				$name = substr($proarray, 0, -3);
-				echo $name;
 		}
 	}
 ?>

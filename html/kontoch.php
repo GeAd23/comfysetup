@@ -53,6 +53,7 @@ else
 <link href='https://css.gg/css' rel='stylesheet'>
 <!--Navbar js-->
 <script src="./js/nav.js"></script>
+<script src="./js/jquery-3.6.0.js"></script>
 </head>
 
 <body>    
