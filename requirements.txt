@@ -3,3 +3,4 @@ ftplib
 auto-py-to-exe
 bcrypt
 validators
+psutil
