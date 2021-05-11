@@ -90,6 +90,7 @@ else
     </div>
     
     <div id="info">
+	<div style="border-width: 2px;border-style: solid;color: blue;float: right;" id="hello-user"><p style="margin: 6px;"><b>Hallo&nbsp;<?php echo $_SESSION["uname"]; ?></b></p></div>
 	<br><p><center>Hier werden Fehler angezeigt, wenn welche aufgetreten sind beim verarbeiten.</center></p><br><br>
 	<div id="infos">
 <?php
