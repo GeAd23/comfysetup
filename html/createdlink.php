@@ -107,9 +107,46 @@ else
 					$userdata = $userlogin->fetchArray();
 					$db->close();
 					$lurl = "";
-					foreach($userdata as &$item)
+					foreach($userdata as $item)
 					{
 						$lurl = $lurl.substr($item["localurl"], 5).",";
+					}
+				}
+				if($lurl != "")
+				{
+					$lurl = substr($lurl, 0, -1);
+					
+					$proarray = shell_exec((escapeshellcmd('/var/www/scripts/prepareTemplate.py '.$lurl)));
+					$name = substr($proarray, 0, -3);
+					echo $name;
+				}
+				else
+				{
+					echo "None";
+				}
+		}
+	}
+	
+	if(isset($_POST["acprg"]))
+	{
+		if($_POST["acprg"] == "true")
+		{
+				if(isset($_POST["bcprg"]))
+				{
+					$programm = $_POST["bcprg"];
+				}
+				$programm = explode(",", $programm);
+				$lurl = "";
+				foreach($programm as $item)
+				{
+					$db = new SQLite3("/var/www/data/MS1.db");
+					$query = $db->prepare("Select * FROM programm WHERE name = '".$item."';");
+					$userlogin = $query->execute();
+					$userdata = $userlogin->fetchArray();
+					$db->close();
+					if(count($userdata) > 0)
+					{
+						$lurl = $lurl.substr($userdata["localurl"], 5).",";
 					}
 				}
 				if($lurl != "")
