@@ -46,6 +46,7 @@ if($userdata["active"] == true)
 		session_start();
 		$_SESSION["timer"] = time();
 		$_SESSION["username"] = $user;
+		$_SESSION["uname"] = $userdata["name"];
 		$_SESSION["userid"] = $userdata["UID"];
 		if($admindb == true)
 		{
