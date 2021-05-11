@@ -92,7 +92,7 @@ else
     
     <div id="info">
         <div id="usrprglist">
-        <?php
+<?php
         $proarray = shell_exec((escapeshellcmd('/var/www/scripts/getprolist.py')));
 	$programme = explode(",",$proarray);
 	$i=0;
@@ -240,7 +240,10 @@ else
             $i = $i+1;
         }
         unset($item);
-        ?>
+        echo '<script language="javascript" type="text/javascript">';
+        echo 'setTimeout(function(){ location.reload(); }, 180000);';
+        echo '</script>';
+?>
          </div>
     </div>
 
