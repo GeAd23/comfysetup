@@ -146,6 +146,7 @@ else
 	}
 	unset($pro1);
 	unset($programme);
+    
 	$i = 1;
         echo '<script language="javascript" type="text/javascript">';
         echo 'var deactivate = false;';
