@@ -101,6 +101,34 @@ else
 	fclose(infof);
 ?>
 	</div>
+	<div id="dataXXX">
+<?php
+	$i = 0;
+	$data_disks = array();
+	while($i <= 1)
+	{
+		$proarray = shell_exec((escapeshellcmd('/var/www/scripts/disk_space.py "/usb/data'.$i.'"')));
+    	if($proarray != "None")
+		{
+			if(floatval($proarray) < 10.0)
+			{
+				$data_disks[] = "data".$i;
+			}
+		}
+		else
+		{
+			foreach($data_disks as $data_disk)
+			{
+				echo "<center>Die Festplatte ".$data_disk." ist fast voll.</center>";
+			}
+			echo '<center>Bitte benachrichtigen sie ihren Administrator.</center>';
+			break;
+		}
+		$i = $i + 1;	
+	}
+	unset($data_disks);
+?>
+	</div>
 	<div id="downloadlink">
 <?php
 	if(isset($_GET["dlink"]))
@@ -194,7 +222,7 @@ else
 			$sqlarray = array(NULL, $name, $url, "/usb/".$lurl, "icos/".$bildname, $stand, $prgos, $time,"normal", $auto);
 			$sqlarray = json_encode($sqlarray);
 			$proarray = shell_exec((escapeshellcmd('/var/www/scripts/setprg.py '.$sqlarray)));
-			echo "<center>".$proarray."<center>";
+			echo "<center>".$proarray."</center>";
 			}
 	}
 	elseif($anzahl_names == 1)
@@ -251,7 +279,7 @@ else
 			}
 			$programme = json_encode($programme);
 			$programme = shell_exec((escapeshellcmd('/var/www/scripts/setproitems.py '.$programme)));
-			echo "<center>".$programme."<center>";
+			echo "<center>".$programme."</center>";
 		}
 		elseif($anzahl_names == 1)
 		{
@@ -303,7 +331,7 @@ else
 				}
 				$sqlarray = json_encode($sqlarray);
                 $proarray = shell_exec((escapeshellcmd('/var/www/scripts/chkonto.py '.$sqlarray)));
-                echo "<center>".$proarray."<center>";
+                echo "<center>".$proarray."</center>";
         }
 ?>
 	</div>
@@ -320,7 +348,7 @@ else
 		if(isset($prgdel1))
 		{
 			$proarray = shell_exec((escapeshellcmd('/var/www/scripts/delprg.py '.$prgdel2)));
-            echo "<center>".$proarray."<center>";
+            echo "<center>".$proarray."</center>";
 		}
 ?>
 	</div> 
@@ -337,7 +365,7 @@ else
 		if(isset($prodel1))
 		{
 			$proarray = shell_exec((escapeshellcmd('/var/www/scripts/delpro.py '.$prodel2)));
-            echo "<center>".$proarray."<center>";
+            echo "<center>".$proarray."</center>";
 		}
 ?>
 	</div> 
