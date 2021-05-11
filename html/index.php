@@ -9,6 +9,7 @@ session_start()
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--Own stylesheet-->
 <link rel="stylesheet" href="./stylesheets/light.css">
+<link rel="stylesheet" href="./stylesheets/div_Liste.css">
 <!--Fonts-->
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet"> 
@@ -54,18 +55,7 @@ session_start()
         <div>
 
             <div id=prglist>
-                <?php
-                    $path = './data/MS1.db';
-                    $db = new SQLite3($path);
-                    $result = $db->query('SELECT * FROM programs');
-                    while ($row = $result->fetchArray()) {
-                        echo "<tr>";
-                        echo "<td><input type='checkbox' name='".$row['name']."'/></td>";
-                        echo "<td><img src=".$row['icon']."></td>";
-                        echo "<td>".$row['name']."</td>";
-                        echo "</tr>";
-                    }
-                ?>
+                
             </div>
         </div>
     </div>
