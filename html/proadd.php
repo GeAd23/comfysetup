@@ -164,6 +164,9 @@ else
 					$i = $i + 1;
 				}
 				echo '<br><input style="visibility:hidden" type="number" name="anz_items" size="5" value='.$i.' required>';
+				echo '<script language="javascript" type="text/javascript">';
+                echo 'setTimeout(function(){ location.reload(); }, 360000);';
+                echo '</script>';
 ?>
 				</div>
 			    <br><br></div>
