@@ -18,8 +18,6 @@ session_start()
 <!--Navbar js-->
 <script src="./js/nav.js"></script>
 <script src="./js/jquery-3.6.0.js"></script>
-<!--jquery-->
-<script type="text/javascript" src="./jquery/jquery-3.5.1.min.js"></script>
 
 </head>
 
