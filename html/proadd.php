@@ -165,7 +165,27 @@ else
 				}
 				echo '<br><input style="visibility:hidden" type="number" name="anz_items" size="5" value='.$i.' required>';
 				echo '<script language="javascript" type="text/javascript">';
-                echo 'setTimeout(function(){ location.reload(); }, 360000);';
+                echo 'var aktualisieren = false;
+
+					  function timer1() {
+					    setTimeout(informieren, 360000);
+					  }
+
+					  function informieren() {
+					    alert("Webseite wird neu geladen");
+					    aktualisieren = confirm("Die Programmliste könnte nicht mehr aktuell sein. Sie sollten die Seite neu laden.\n\nAlle Eingaben gehen dabei verloren!!!");
+					    prüf_siteTime();
+					  }
+
+					  function prüf_siteTime() {
+					    if (aktualisieren == true) {
+						  location.reload();
+					    } else {
+						  timer1();
+					    }
+					  }
+
+					  prüf_siteTime();';
                 echo '</script>';
 ?>
 				</div>
