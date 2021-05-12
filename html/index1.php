@@ -117,9 +117,37 @@
 		  }
 		  else
 		  {
-			 document.getElementById("errors").innerHTML = "<br><center style='color:red;'>Es muss oben mindestens ein Programm ausgew√§hlt werden !</center>";
+			 document.getElementById("errors").innerHTML = "<br><center style='color:red;'>Es muss oben mindestens ein Programm ausgew‰hlt werden !</center>";
 		  }
 		  };';
+	echo '</script>';
+	echo '<script type="text/javascript">';
+	echo 'function timer1()
+		  {
+			  setTimeout(start_download, 20000);
+		  console.log("New");
+		  }
+
+		  function start_download()
+		  {
+			  try
+		    {
+			  if(document.getElementById("downloadb") != "undefined")
+			  {
+				  document.getElementById("downloadb").click();
+			  }
+			  else
+			  {
+				  timer1();
+			  }
+		    }
+		    catch (e)
+		    {
+			  timer1();
+		    }
+		  }
+
+		  start_download();';
 	echo '</script>';
 	echo '</div>';
 	echo '</center>';
