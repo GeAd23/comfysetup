@@ -49,12 +49,9 @@ session_start()
         <a href="./index.php" id="logo"><img src="./media/icons/logo.png" alt="Logo"></a>
     </div>
 
-    <div id="info" class="info">
+    <div id="info">
         <div>
-
-            <div id=prglist>
-                
-            </div>
+            
         </div>
     </div>
 
