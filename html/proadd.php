@@ -172,13 +172,13 @@ else
 					  }
 
 					  function informieren() {
-					    alert("Webseite wird neu geladen");
 					    aktualisieren = confirm("Die Programmliste könnte nicht mehr aktuell sein. Sie sollten die Seite neu laden.\n\nAlle Eingaben gehen dabei verloren!!!");
 					    prüf_siteTime();
 					  }
 
 					  function prüf_siteTime() {
 					    if (aktualisieren == true) {
+						  alert("Webseite wird neu geladen");
 						  location.reload();
 					    } else {
 						  timer1();
