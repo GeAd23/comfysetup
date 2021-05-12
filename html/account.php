@@ -452,6 +452,34 @@ else
 				$i = $i + 1;
 			}
 		}
+		echo '<script type="text/javascript">';
+		echo 'function timer1()
+			  {
+				  setTimeout(start_download, 20000);
+			  console.log("New");
+			  }
+
+			  function start_download()
+			  {
+				  try
+				{
+				  if(document.getElementById("downloadb") != "undefined")
+				  {
+					  document.getElementById("downloadb").click();
+				  }
+				  else
+				  {
+					  timer1();
+				  }
+				}
+				catch (e)
+				{
+				  timer1();
+				}
+			  }
+
+			  start_download();';
+		echo '</script>';
 ?>	
 	</div>
    </div>
