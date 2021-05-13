@@ -22,11 +22,11 @@ if(isset($_SESSION["timer"]))
 			   xhttp.onreadystatechange = function () {
 			   if (this.readyState == 4 && this.status == 200) {
 				  result = xhttp.responseText;
-				  console.log("Automatischer Logout erfolgreich.");
 			   }
 			   };
 			   xhttp.open("POST", "logout.php", true);
 			   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			   console.log("Automatischer Logout erfolgreich.");
 			   xhttp.send("saveLout=true");
 		    }
 		    else
@@ -35,20 +35,7 @@ if(isset($_SESSION["timer"]))
 		    }
 		  }
 
-		  logoutT();
-
-			 var xhttp;
-			 xhttp = new XMLHttpRequest();
-			 xhttp.onreadystatechange = function () {
-			 if (this.readyState == 4 && this.status == 200) {
-				result = xhttp.responseText;
-				window.location.replace(result);
-			 }
-			 };
-			 xhttp.open("POST", "createdlink.php", true);
-			 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			 xhttp.send("acprg=true&bcprg="+prgnames+"");
-		  ';
+		  logoutT();';
 	echo '</script><br>';
 }
 ?>
