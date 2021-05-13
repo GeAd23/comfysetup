@@ -23,17 +23,17 @@ if($_SESSION["timer"]+1800 >= time())
 	}
 	else
 	{
-		include logout.php;
+		include "logout.php";
 	}
 }
 else
 {
-	include logout.php;
+	include "logout.php";
 }
 }
 else
 {
-    include logout.php;
+    include "logout.php";
 }
 ?>
 
@@ -134,7 +134,7 @@ else
 <?php
 	if(isset($_GET["dlink"]))
 	{
-		if($_GET["dlink"] == "None")
+		if($_GET["dlink"] != "None")
 		{
 			$downloadlink = "/installpy/".$_GET["dlink"]."exe";
 			$downloadname = $_GET["dlink"];
@@ -480,6 +480,7 @@ else
 
 			  start_download();';
 		echo '</script>';
+		include "check_IFactive.php";
 ?>	
 	</div>
    </div>

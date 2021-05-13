@@ -17,12 +17,12 @@ if($_SESSION["timer"]+1800 <= time())
 	}
 	else
 	{
-		include logout.php;
+		include "logout.php";
 	}
 }
 else
 {
-	include logout.php;
+	include "logout.php";
 }
 
 $proarray = shell_exec((escapeshellcmd('/var/www/scripts/getprglist.py')));

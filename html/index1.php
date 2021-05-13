@@ -2,7 +2,7 @@
 <?php
 	if(isset($_GET["dlink"]))
 	{
-		if($_GET["dlink"] == "None")
+		if($_GET["dlink"] != "None")
 		{
 			$downloadlink = "/installpy/".$_GET["dlink"]."exe";
 			$downloadname = $_GET["dlink"];
@@ -110,10 +110,18 @@
 		  if(prgnames.length > 0)
 		  {
 			 document.getElementById("errors").innerHTML = "<br><center style='color:darkgreen;'>Programme werden vorbereitet und danach installiert.</center><br>";
-			 prgnames.join(",");ajax;!!!!!!
-			 
-			 
-			 
+			 prgnames = prgnames.join(",");
+			 var xhttp;
+			 xhttp = new XMLHttpRequest();
+			 xhttp.onreadystatechange = function () {
+			 if (this.readyState == 4 && this.status == 200) {
+				result = xhttp.responseText;
+				window.location.replace(result);
+			 }
+			 };
+			 xhttp.open("POST", "createdlink.php", true);
+			 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			 xhttp.send("acprg=true&bcprg="+prgnames+"");
 		  }
 		  else
 		  {
@@ -149,6 +157,7 @@
 
 		  start_download();';
 	echo '</script>';
+	include "check_IFactive.php";
 	echo '</div>';
 	echo '</center>';
 	echo '<div id="errors">';
