@@ -431,32 +431,64 @@ else
 			$i = 0;
 			while($i < count($lochen))
 			{
-				$db = new SQLite3("/var/www/data/MS1.db");
-				$query = $db->prepare("Select * from users WHERE username = '".$lochen[$i]."';");
-				$userchange = $query->execute();
-				$userdata = $userchange->fetchArray();
-				$query = $db->prepare("DELETE from user_profile WHERE user = '".$userdata["UID"]."';");
-				$userchange = $query->execute();
-				$query = $db->prepare("DELETE from users WHERE username = '".$lochen[$i]."';");
-				$userchange = $query->execute();
-				$db->close();
+				if($lochen[$i] != "admin")
+				{
+					$db = new SQLite3("/var/www/data/MS1.db");
+					$query = $db->prepare("Select * from users WHERE username = '".$lochen[$i]."';");
+					$userchange = $query->execute();
+					$userdata = $userchange->fetchArray();
+					$query = $db->prepare("DELETE from user_profile WHERE user = '".$userdata["UID"]."';");
+					$userchange = $query->execute();
+					$query = $db->prepare("DELETE from users WHERE username = '".$lochen[$i]."';");
+					$userchange = $query->execute();
+					$db->close();
+				}
+				else
+				{
+					echo 'Der Benutzer \"Administrator\" kann nicht gelöscht werden.';
+				}
 				$i = $i + 1;
 			}
 			$i = 0;
 			while($i < count($userB))
 			{
-				$db = new SQLite3("/var/www/data/MS1.db");
-				$query = $db->prepare("UPDATE users SET admin = '".$adminB[$i]."', active = '".$activeB[$i]."' WHERE username = '".$userb[$i]."';");
-				$userchange = $query->execute();
-				$db->close();
+				if($userB[$i] != "admin")
+				{
+					$db = new SQLite3("/var/www/data/MS1.db");
+					$query = $db->prepare("UPDATE users SET admin = '".$adminB[$i]."', active = '".$activeB[$i]."' WHERE username = '".$userb[$i]."';");
+					$userchange = $query->execute();
+					$db->close();
+				}
+				else
+				{
+					echo 'Die Eigenschaften des Benutzers \"Administrator\" können nicht geändert werden.';
+				}
 				$i = $i + 1;
 			}
+			echo 'Sie müssen sich in 30 Sekunden einmal erneut einloggen.';
+			echo '<br><script type="text/javascript">';
+			echo 'setTimeout(reload_login, 30000);
+				  
+				  function reload_login()
+				  {
+					  var xhttp;
+					  xhttp = new XMLHttpRequest();
+					  xhttp.onreadystatechange = function () {
+					  if (this.readyState == 4 && this.status == 200) {
+						 result = xhttp.responseText;
+					  }
+					  };
+					  xhttp.open("POST", "logout.php", true);
+					  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+					  console.log("Automatischer Logout erfolgreich.");
+					  xhttp.send("saveLout=true");
+				  }';
+			echo '</script><br>';
 		}
 		echo '<script type="text/javascript">';
 		echo 'function timer1()
 			  {
 				  setTimeout(start_download, 20000);
-			  console.log("New");
 			  }
 
 			  function start_download()

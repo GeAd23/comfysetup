@@ -133,7 +133,6 @@
 	echo 'function timer1()
 		  {
 			  setTimeout(start_download, 20000);
-		  console.log("New");
 		  }
 
 		  function start_download()
