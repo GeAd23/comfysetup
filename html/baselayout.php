@@ -4,6 +4,8 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--Own stylesheet-->
+<title>Base Aufbau</title>
+<link rel="shortcut icon" href="./media/icons/comfySetup.ico">
 <link rel="stylesheet" href="./stylesheets/light.css">
 <!--Fonts-->
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -25,6 +27,12 @@
             <a class="haltdeinefressejulien" href="">Profil erstellen</a><br>
             <a class="haltdeinefressejulien" href="">Programm hinzufügen</a><br>
             <a class="haltdeinefressejulien" href="">Konto bearbeiten</a><br>
+			<?php
+			if($_SESSION["admin"] == true)
+			{
+				echo '<a class="haltdeinefressejulien" href="">Benutzer verwalten</a><br>';
+			}
+			?>
         <a href="./about.php">About</a><br>
         <a href="./help.php">Help</a>
         <?php

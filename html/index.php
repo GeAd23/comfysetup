@@ -8,6 +8,7 @@ session_start()
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--Own stylesheet-->
+<link rel="shortcut icon" href="./media/icons/comfySetup.ico">
 <link rel="stylesheet" href="./stylesheets/light.css">
 <link rel="stylesheet" href="./stylesheets/div_Liste.css">
 <!--Fonts-->

@@ -44,6 +44,7 @@ else
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--Own stylesheet-->
+<link rel="shortcut icon" href="./media/icons/comfySetup.ico">
 <link rel="stylesheet" href="./stylesheets/light.css">
 <link rel="stylesheet" href="./stylesheets/div_Liste.css">
 <!--Fonts-->
@@ -67,6 +68,12 @@ else
             <a class="haltdeinefressejulien" href="proadd.php">Profil erstellen</a><br>
             <a class="haltdeinefressejulien" href="prgadd.php">Programm hinzufügen</a><br>
             <a class="haltdeinefressejulien" href="kontoch.php">Konto bearbeiten</a><br>
+			<?php
+			if($_SESSION["admin"] == true)
+			{
+				echo '<a class="haltdeinefressejulien" href="user_verwaltungA.php">Benutzer verwalten</a><br>';
+			}
+			?>
         <a href="./about.php">About</a><br>
         <a href="./help.php">Help</a>
         <?php
