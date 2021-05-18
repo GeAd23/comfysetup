@@ -6,3 +6,4 @@ validators
 psutil
 
 SSL Zertbot Vorbereitung mit no-ip in "Downloads"
+https://tutorials-raspberrypi.de/raspberry-pi-ssl-zertifikat-kostenlos-mit-lets-encrypt-erstellen/
