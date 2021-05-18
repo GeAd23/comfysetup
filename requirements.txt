@@ -4,3 +4,5 @@ auto-py-to-exe
 bcrypt
 validators
 psutil
+
+SSL Zertbot Vorbereitung mit no-ip in "Downloads"
