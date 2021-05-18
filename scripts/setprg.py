@@ -17,4 +17,4 @@ def setprg(arg_list):
     conn.close()
 
 setprg(arg_list)
-downloadown.download(url)
+downloadown.download(json.dump(arg_list)[0], url)
