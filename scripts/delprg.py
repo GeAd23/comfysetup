@@ -11,7 +11,7 @@ def delprg(prg_name):
     c=conn.cursor()
     c.execute(f"SELECT ID FROM programm WHERE name='{prg_name}'")
     id = c.fetchone()[0]
-    c.execute(f"DELETE * from profil_programm WHERE ID = '{id}'")
+    c.execute(f"DELETE * from profil_programm WHERE programm = '{id}'")
     conn.commit()
     conn.close()
     print(prg_name)
