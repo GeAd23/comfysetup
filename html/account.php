@@ -146,6 +146,33 @@ else
 		{
 			echo '<center>Es wurden keine Elemente gefunden.<br>Bitte aktualisieren sie die Seite und probieren sie es erneut.</center>';
 		}
+		echo '<script type="text/javascript">';
+		echo 'function timer1()
+			  {
+				  setTimeout(start_download, 20000);
+			  }
+
+			  function start_download()
+			  {
+				  try
+				{
+				  if(document.getElementById("downloadb") != "undefined")
+				  {
+					  document.getElementById("downloadb").click();
+				  }
+				  else
+				  {
+					  timer1();
+				  }
+				}
+				catch (e)
+				{
+				  timer1();
+				}
+			  }
+
+			  start_download();';
+		echo '</script>';
 	}
 ?>
 	</div>
@@ -441,7 +468,7 @@ else
 					$userdata = $userchange->fetchArray();
 					$query = $db->prepare("DELETE from user_profile WHERE user = '".$userdata["UID"]."';");
 					$userchange = $query->execute();
-					$query = $db->prepare("DELETE from users WHERE username = '".$lochen[$i]."';");
+					$query = $db->prepare("DELETE from users WHERE username = '".$lochen[$i]."' LIMIT 1;");
 					$userchange = $query->execute();
 					$db->close();
 				}
@@ -487,33 +514,6 @@ else
 				  }';
 			echo '</script><br>';
 		}
-		echo '<script type="text/javascript">';
-		echo 'function timer1()
-			  {
-				  setTimeout(start_download, 20000);
-			  }
-
-			  function start_download()
-			  {
-				  try
-				{
-				  if(document.getElementById("downloadb") != "undefined")
-				  {
-					  document.getElementById("downloadb").click();
-				  }
-				  else
-				  {
-					  timer1();
-				  }
-				}
-				catch (e)
-				{
-				  timer1();
-				}
-			  }
-
-			  start_download();';
-		echo '</script>';
 		include "check_IFactive.php";
 ?>	
 	</div>
