@@ -20,29 +20,29 @@
     <div id="side_nav" class="sidenav">
         <!--Inhalt der Navigationsleiste-->
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="./index.php">Home</a><br>
-        <a href="./account.php">Konto</a><br>
-            <a class="haltdeinefressejulien" href="">Programm Liste</a><br>
-            <a class="haltdeinefressejulien" href="">Profil Liste</a><br>
-            <a class="haltdeinefressejulien" href="">Profil erstellen</a><br>
-            <a class="haltdeinefressejulien" href="">Programm hinzufügen</a><br>
-            <a class="haltdeinefressejulien" href="">Konto bearbeiten</a><br>
+        <a href="./index.php"><img src="./media/icons/home.svg" style="height: 20px; width: auto;">&nbsp;Home</a><br>
+        <a href="./account.php"><img src="./media/icons/konto.svg" style="height: 20px; width: auto;">&nbsp;Konto</a><br>
+            <a class="haltdeinefressejulien" href=""><img src="./media/icons/list.svg" style="height: 20px; width: auto;">&nbsp;Programm Liste</a><br>
+            <a class="haltdeinefressejulien" href=""><img src="./media/icons/list.svg" style="height: 20px; width: auto;">&nbsp;Profil Liste</a><br>
+            <a class="haltdeinefressejulien" href=""><img src="./media/icons/add.svg" style="height: 20px; width: auto;">&nbsp;Profil erstellen</a><br>
+            <a class="haltdeinefressejulien" href=""><img src="./media/icons/add.svg" style="height: 20px; width: auto;">&nbsp;Programm hinzufügen</a><br>
+            <a class="haltdeinefressejulien" href=""><img src="./media/icons/edit.svg" style="height: 20px; width: auto;">&nbsp;Konto bearbeiten</a><br>
 			<?php
 			if($_SESSION["admin"] == true)
 			{
-				echo '<a class="haltdeinefressejulien" href="">Benutzer verwalten</a><br>';
+				echo '<a class="haltdeinefressejulien" href=""><img src="./media/icons/edit.svg" style="height: 20px; width: auto;">&nbsp;Benutzer verwalten</a><br>';
 			}
 			?>
-        <a href="./about.php">About</a><br>
-        <a href="./help.php">Help</a>
+        <a href="./about.php"><img src="./media/icons/über.svg" style="height: 20px; width: auto;">&nbsp;About</a><br>
+        <a href="./help.php"><img src="./media/icons/help.svg" style="height: 20px; width: auto;">&nbsp;Help</a><br>
         <?php
         if(isset($_SESSION["timer"]))
             {
-                echo '<a class="logout" href="logout.php">Logout</a>';
+                echo '<a class="logout" href="logout.php"><img src="./media/icons/logout.svg" style="height: 20px; width: auto;">&nbsp;Logout</a>';
             }
             else
             {
-                echo '<a class="log_in" href="login1.php">Login</a>';
+                echo '<a class="log_in" href="login1.php"><img src="./media/icons/login.svg" style="height: 20px; width: auto;">&nbsp;Login</a>';
             }
         ?> 
     </div>

@@ -6,7 +6,7 @@
 		{
 			$downloadlink = "/installpy/".$_GET["dlink"]."exe";
 			$downloadname = $_GET["dlink"];
-			echo '<a href='.$downloadlink.' alt='.$downloadname.' download><button id="downloadb">Download Windows Installer</button><a/>'; #CSS muss noch angepasst werden.
+			echo '<a href='.$downloadlink.' alt='.$downloadname.' download><button class="button2" id="downloadb"><img src="./media/icons/download.svg" style="height: 20px; width: auto;">&nbsp;Download Windows Installer</button><a/>'; #CSS muss noch angepasst werden.
 		}
 		else
 		{

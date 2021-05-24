@@ -44,14 +44,14 @@ else
 	}
 
 	echo '<div id="proinhalt">
-	<button onclick="window.location.replace("prolist.php")" id="'.$proinhalt.'">
-    Zurück
+	<button class="button1" onclick="window.location.replace("prolist.php")" id="'.$proinhalt.'">
+    <img src="./media/icons/back.svg" style="height: 20px; width: auto;">&nbsp;Zurück
     </button>&nbsp;&nbsp;&nbsp;
 	<button onclick="programm_aktuell1()" id="'.$proinhalt.'">
-    Aktuell
+    <img src="./media/icons/update.svg" style="height: 20px; width: auto;">&nbsp;Aktuell
     </button>
 	<button onclick="programm_download1()" id="'.$proinhalt.'">
-    Herunterladen
+    <img src="./media/icons/download.svg" style="height: 20px; width: auto;">&nbsp;Herunterladen
     </button><br><br><br>';
 	echo '<script language="javascript" type="text/javascript">';
 	echo '	function programm_aktuell'.'1'.'(){
@@ -115,8 +115,8 @@ else
 				</p>
 				</div>';
 	}
-	echo '<br><br><button onclick="window.location.replace("prolist.php")" id="'.$proinhalt.'">
-		  Zurück
+	echo '<br><br><button class="button1" onclick="window.location.replace("prolist.php")" id="'.$proinhalt.'">
+		  <img src="./media/icons/back.svg" style="height: 20px; width: auto;">&nbsp;Zurück
 		  </button>&nbsp;';
 echo '</div>';
 ?>

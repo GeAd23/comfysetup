@@ -63,29 +63,29 @@ else
     <div id="side_nav" class="sidenav">
         <!--Inhalt der Navigationsleiste-->
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="./index.php">Home</a><br>
-        <a>Konto</a><br>
-            <a class="haltdeinefressejulien" href="prglist.php">Programm Liste</a><br>
-            <a class="haltdeinefressejulien" href="prolist.php">Profil Liste</a><br>
-            <a class="haltdeinefressejulien" href="proadd.php">Profil erstellen</a><br>
-            <a class="haltdeinefressejulien" href="prgadd.php">Programm hinzufügen</a><br>
-            <a class="haltdeinefressejulien" href="kontoch.php">Konto bearbeiten</a><br>
+        <a href="./index.php"><img src="./media/icons/home.svg" style="height: 20px; width: auto;">&nbsp;Home</a><br>
+        <a><img src="./media/icons/konto.svg" style="height: 20px; width: auto;">&nbsp;Konto</a><br>
+            <a class="haltdeinefressejulien" href="prglist.php"><img src="./media/icons/list.svg" style="height: 20px; width: auto;">&nbsp;Programm Liste</a><br>
+            <a class="haltdeinefressejulien" href="prolist.php"><img src="./media/icons/list.svg" style="height: 20px; width: auto;">&nbsp;Profil Liste</a><br>
+            <a class="haltdeinefressejulien" href="proadd.php"><img src="./media/icons/add.svg" style="height: 20px; width: auto;">&nbsp;Profil erstellen</a><br>
+            <a class="haltdeinefressejulien" href="prgadd.php"><img src="./media/icons/add.svg" style="height: 20px; width: auto;">&nbsp;Programm hinzufügen</a><br>
+            <a class="haltdeinefressejulien" href="kontoch.php"><img src="./media/icons/edit.svg" style="height: 20px; width: auto;">&nbsp;Konto bearbeiten</a><br>
 			<?php
 			if($_SESSION["admin"] == true)
 			{
-				echo '<a class="haltdeinefressejulien" href="user_verwaltungA.php">Benutzer verwalten</a><br>';
+				echo '<a class="haltdeinefressejulien" href="user_verwaltungA.php"><img src="./media/icons/edit.svg" style="height: 20px; width: auto;">&nbsp;Benutzer verwalten</a><br>';
 			}
 			?>
-        <a href="./about.php">About</a><br>
-        <a href="./help.php">Help</a>
+        <a href="./about.php"><img src="./media/icons/über.svg" style="height: 20px; width: auto;">&nbsp;About</a><br>
+        <a href="./help.php"><img src="./media/icons/help.svg" style="height: 20px; width: auto;">&nbsp;Help</a><br>
         <?php
         if(isset($_SESSION["timer"]))
             {
-                echo '<a class="logout" href="logout.php">Logout</a>';
+                echo '<a class="logout" href="logout.php"><img src="./media/icons/logout.svg" style="height: 20px; width: auto;">&nbsp;Logout</a>';
             }
             else
             {
-                echo '<a class="log_in" href="login1.php">Login</a>';
+                echo '<a class="log_in" href="login1.php"><img src="./media/icons/login.svg" style="height: 20px; width: auto;">&nbsp;Login</a>';
             }
         ?> 
     </div>
@@ -231,17 +231,17 @@ else
             echo '<div onclick="programm_bearbeitenD'.$i.'()" id="'.$item[1].'" class="profile">
             <p id="inhalt">
             <b>'.$item[1].'</b>&nbsp;&nbsp;&nbsp;'.$time.'&nbsp;&nbsp;&nbsp;
-            <button onclick="programm_aktuell'.$i.'()" id="'.$item[1].'">
-            Aktuell
+            <button class="button1" onclick="programm_aktuell'.$i.'()" id="'.$item[1].'">
+            <img src="./media/icons/update.svg" style="height: 20px; width: auto;">&nbsp;Aktuell
             </button>
-            <button onclick="programm_download'.$i.'()" id="'.$item[1].'">
-            Herunterladen
+            <button class="button1" onclick="programm_download'.$i.'()" id="'.$item[1].'">
+            <img src="./media/icons/download.svg" style="height: 20px; width: auto;">&nbsp;Herunterladen
             </button>
-            <button onclick="programm_bearbeiten'.$i.'()" id="'.$item[1].'">
-            Bearbeiten
+            <button class="button1" onclick="programm_bearbeiten'.$i.'()" id="'.$item[1].'">
+            <img src="./media/icons/edit.svg" style="height: 20px; width: auto;">&nbsp;Bearbeiten
             </button>
-            <button onclick="programm_loeschen'.$i.'()" id="'.$item[1].'">
-            Löschen
+            <button class="button1" onclick="programm_loeschen'.$i.'()" id="'.$item[1].'">
+            <img src="./media/icons/delete.svg" style="height: 20px; width: auto;">&nbsp;Löschen
             </button>
             </p>
             </div>';
