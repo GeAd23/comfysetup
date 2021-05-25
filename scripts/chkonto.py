@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 import sqlite3 as sql
 import sys
-import json
 
 db_conn=sql.connect('/var/www/data/MS1.db', timeout=20)
 arg_list=sys.argv[1:]
-user = json.dump(arg_list)
+user = arg_list.split(",")
 
 def update_profile(name, username, password):
     conn=db_conn
