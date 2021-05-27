@@ -14,3 +14,7 @@ def setproitems(items):
     programms = items[1:]
     for programm in programms:
         c.execute(f"""INSERT INTO profile_programms(profile, programms) VALUES ('{profile_id}', '{programm}'""")
+    conn.commit()
+    conn.close()
+
+setproitems(items)
