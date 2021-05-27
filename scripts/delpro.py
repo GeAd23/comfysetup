@@ -14,3 +14,5 @@ def delpro(name):
     c.execute(f"""DELETE * FROM profil WHERE ID = '{id[0]}' """)
     conn.commit()
     conn.close()
+
+delpro(name)
