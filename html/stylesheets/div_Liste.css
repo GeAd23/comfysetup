@@ -106,7 +106,7 @@
     border-color: #818181;
 }
 
-.padd input#poname{
+.padd .poname{
     border: 1px solid;
     border-radius: 5px;
     font-size: 20px;
