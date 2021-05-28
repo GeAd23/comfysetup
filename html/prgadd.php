@@ -101,7 +101,7 @@ else
 		<div id="prgadd">
 			<form action="account.php" method="post" enctype="multipart/form-data">
 			    <button class="button1" type="Submit"><img src="./media/icons/save.svg" style="height: 20px; width: auto;">&nbsp;Speichern</button>
-			    <div id="padd"><br>
+			    <div id="padd" class="padd"><br>
 			    <input type="text" id="pname" name="pname" size="30" placeholder="Programmname" required><br><br><br>
 			    <label>Wählen Sie eine Programmbilddatei (*.png, *.jpg, *.jpeg, *.ico) von Ihrem Rechner aus.
 				<input id="pico" name="bilddatei" type="file" size="30" accept=".jpg, .jpeg, .png, .ico" required> 
