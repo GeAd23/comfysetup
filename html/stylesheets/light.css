@@ -101,6 +101,8 @@
             width: 1490px;
             top: 7%;
             left: 3%;
+            margin-left: 10px;
+            margin-top: 10px;
         }
         
         #login{

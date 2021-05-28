@@ -19,7 +19,7 @@
     border-width: 3px;
     border-style: solid;
     height: auto;
-    width: 790px;
+    width: auto;
     margin: 0 auto;
     text-align: left;
     margin-bottom: 6px;
@@ -106,6 +106,26 @@
     border-color: #818181;
 }
 
+.padd input{
+    border: 1px solid;
+    border-radius: 5px;
+    font-size: 20px;
+    width: 90%;
+    height: 40px;
+    margin: 10px 0;
+    background-color: #121212;
+    border-color:#818181;
+    color: #818181;
+}
+
+.padd p{
+    color:white;
+    border-width: 1px;
+    border-radius: 5px;
+    background-color: #121212;
+    opacity: 60%;
+}
+
 .button1{
 	background-color: #a23d74;
 	border-width: 1px;
@@ -114,6 +134,8 @@
 	padding: 8px 10px;
 	font-size: 16px;
 	cursor: pointer;
+    align-items: right;
+    border-color:#818181
 }
 
 .button1 img{
