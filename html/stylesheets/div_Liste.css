@@ -16,7 +16,7 @@
 
 .profile{
     border-radius: 20px;
-    border-width: 3px;
+    border-width: 1px;
     border-style: solid;
     height: auto;
     width: auto;
@@ -106,11 +106,11 @@
     border-color: #818181;
 }
 
-.padd input{
+.padd input#poname{
     border: 1px solid;
     border-radius: 5px;
     font-size: 20px;
-    width: 90%;
+    width: 50%;
     height: 40px;
     margin: 10px 0;
     background-color: #121212;
