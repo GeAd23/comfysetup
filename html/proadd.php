@@ -103,7 +103,7 @@ else
 			<form action="account.php" method="post" enctype="multipart/form-data">
 			    <button class="button1" type="Submit"><img src="./media/icons/save.svg" style="height: 20px; width: auto;">&nbsp;Speichern</button>
 			    <div id="padd"><br>
-			    <input type="text" id="poname" name="poname" size="30" placeholder="Profilname" required><br><br><br>
+			    <input type="text" class="poname" id="poname" name="poname" size="30" placeholder="Profilname" required><br><br><br>
 			    <br><br><br>
 				<p id="erklärung_auswahl">Wählen sie alle Programme aus, die zu diesem Profil hinzugefügt werden sollen.</p><br><br>
 				<div id="programme">
