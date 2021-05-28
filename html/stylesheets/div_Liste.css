@@ -3,7 +3,7 @@
     border-width: 1px;
     border-style: solid;
     height: auto;
-    width: 870px;
+    width: auto;
     margin: 0 auto;
     text-align: left;
     margin-bottom: 6px;
@@ -107,12 +107,17 @@
 }
 
 .button1{
-	background-color: DarkBlue;
-	border: none;
-	color: Yellow;
+	background-color: #a23d74;
+	border-width: 1px;
+    border-radius: 5px;
+	color: white;
 	padding: 8px 10px;
 	font-size: 16px;
 	cursor: pointer;
+}
+
+.button1 img{
+    -webkit-filter: invert(100);
 }
 
 .button2{
