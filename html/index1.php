@@ -1,16 +1,24 @@
+	<div id="welcomepic">
+                <br>
+                <center><img style="height: auto;width: 50%;" src="./media/icons/paketverwaltung.jpeg" alt="Paketverwaltung"></center>
+                <br><br><br>
+        </div>
+
 	<div id="downloadlink">
 <?php
 	if(isset($_GET["dlink"]))
 	{
 		if($_GET["dlink"] != "None")
 		{
-			$downloadlink = "/installpy/".$_GET["dlink"]."exe";
+			$downloadlink = "/installpy/".$_GET["dlink"].".zip";
 			$downloadname = $_GET["dlink"];
 			echo '<a href='.$downloadlink.' alt='.$downloadname.' download><button class="button2" id="downloadb"><img src="./media/icons/download.svg" style="height: 20px; width: auto;">&nbsp;Download Windows Installer</button><a/>'; #CSS muss noch angepasst werden.
+			echo '<br><br><br>';
 		}
 		else
 		{
 			echo '<center>Es wurden keine Elemente gefunden.<br>Bitte aktualisieren sie die Seite und probieren sie es erneut.</center>';
+			echo '<br><br><br>';
 		}
 	}
 ?>
@@ -19,68 +27,42 @@
 	
 	
 <?php
-	$proarray = shell_exec((escapeshellcmd('/var/www/scripts/getprglistS.py')));
-	$programme = explode(",",$proarray);
-	$i=0;
-	$j=0;
-	foreach($programme as &$prog)
-	{
-		$pro1 = explode("[(",$prog);
-                if(count($pro1) > 1)
+	    $proarray = shell_exec((escapeshellcmd('/var/www/scripts/getprglistS.py')));
+	    $programme = explode(",", $proarray);
+	    $i = 0;
+	    $j = 0;
+	    foreach($programme as &$prog)
+	    {
+		if(strpos($prog,"|") !== false)
                 {
-                        $programme0[$j][$i] = $pro1[1];
+			$pro1 = explode("|", $prog)[1];
+			$j = $j + 1;
+			$programme0[$j][$i] = $pro1;
 		}
-		if(strpos($prog,"')]") != "")
-                {       
-                        $pro1 = explode("')]",$prog);
-                        $programme0[$j][$i] = $pro1[0];
-                }
-		elseif(strpos($prog,")]") != "")
-		{	
-			$pro1 = explode(")]",$prog);
-			$programme0[$j][$i] = $pro1[0];
-		}
-		elseif(strpos($prog,"[('") != "") 
-                {
-                        $pro1 = explode("[('",$prog);
-                        $programme0[$j][$i] = $pro1[1];
-                }
-		elseif(strpos($prog,"[(") != "") 
-          	{
-                        $pro1 = explode("[(",$prog);
-                        $programme0[$j][$i] = $pro1[1];
-			echo $pro1[1];
-                }
-		elseif(strpos($prog,")") != "") 
-                {
-                        $pro1 = explode(")",$prog);
-                        $programme0[$j][$i] = $pro1[0];
-						$j = $j+1;
-                }
-		elseif(strpos($prog,"(") != "") 
-                {
-                        $pro1 = explode("(",$prog);
-                        $programme0[$j][$i] = $pro1[1];
-                }
-		if(strpos($prog,"'") != "")
+		else
 		{
-			$pro1 = explode("'",$prog);
-			$programme0[$j][$i] = $pro1[1];
+			$programme0[$j][$i] = $prog;
 		}
-
-		$i = $i+1;
-	}
-	unset($pro1);
-	unset($programme);
-	
-	$i = 1;
-	echo '<center>';
-	echo '<div id="check">';
-	echo '<script type="text/javascript">';
-	echo 'var prgnames = [];';
-	echo '</script>';
-	foreach($programme0 as $prg)
-	{
+		$i = $i + 1;
+	    }
+	    $i=0;
+	    $j=0;
+	    unset($pro1);
+	    unset($programme);
+	    echo '<center>';
+            echo '<div id="check">';
+            echo '<script type="text/javascript">';
+            echo 'var prgnames = [];';
+            echo '</script>';
+	    $i = 1;
+            foreach($programme0 as $prg)
+	    {
+	    	$it = 0;
+	    	foreach($prg as $newprg)
+	        {
+			$prg[$it] = $newprg;
+			$it = $it + 1;
+	        }
 		echo '<label><input type="checkbox" id="prg'$i'" value="'.$prg[1].'"><img src="'.$prg[4].'" class="pbild">&nbsp;&nbsp;&nbsp;'.$prg[1].'</label>';
 		if(($i % 8) == 0)
 		{
@@ -116,6 +98,7 @@
 			 xhttp.onreadystatechange = function () {
 			 if (this.readyState == 4 && this.status == 200) {
 				result = xhttp.responseText;
+				result = "index1.php?dlink=" + result;
 				window.location.replace(result);
 			 }
 			 };

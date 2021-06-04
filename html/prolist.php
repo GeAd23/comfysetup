@@ -102,64 +102,39 @@ else
         <div id="usrprglist">
 <?php
         $proarray = shell_exec((escapeshellcmd('/var/www/scripts/getprolist.py')));
-	$programme = explode(",",$proarray);
-	$i=0;
-	$j=0;
+	$programme = explode(",", $proarray);
+	$i = 0;
+	$j = 0;
 	foreach($programme as &$prog)
 	{
-		$pro1 = explode("[(",$prog);
-                if(count($pro1) > 1)
+		if(strpos($prog,"|") !== false)
                 {
-                        $programme0[$j][$i] = $pro1[1];
+			$pro1 = explode("|", $prog)[1];
+			$j = $j + 1;
+			$programme0[$j][$i] = $pro1;
 		}
-		if(strpos($prog,"')]") != "")
-                {       
-                        $pro1 = explode("')]",$prog);
-                        $programme0[$j][$i] = $pro1[0];
-                }
-		elseif(strpos($prog,")]") != "")
-		{	
-			$pro1 = explode(")]",$prog);
-			$programme0[$j][$i] = $pro1[0];
-		}
-		elseif(strpos($prog,"[('") != "") 
-                {
-                        $pro1 = explode("[('",$prog);
-                        $programme0[$j][$i] = $pro1[1];
-                }
-		elseif(strpos($prog,"[(") != "") 
-          	{
-                        $pro1 = explode("[(",$prog);
-                        $programme0[$j][$i] = $pro1[1];
-			echo $pro1[1];
-                }
-		elseif(strpos($prog,")") != "") 
-                {
-                        $pro1 = explode(")",$prog);
-                        $programme0[$j][$i] = $pro1[0];
-			$j = $j+1;
-                }
-		elseif(strpos($prog,"(") != "") 
-                {
-                        $pro1 = explode("(",$prog);
-                        $programme0[$j][$i] = $pro1[1];
-                }
-		if(strpos($prog,"'") != "")
+		else
 		{
-			$pro1 = explode("'",$prog);
-			$programme0[$j][$i] = $pro1[1];
+			$programme0[$j][$i] = $prog;
 		}
-
-		$i = $i+1;
+		$i = $i + 1;
 	}
+	$i=0;
+	$j=0;
 	unset($pro1);
 	unset($programme);
 	$i = 1;
         echo '<script language="javascript" type="text/javascript">';
         echo 'var deactivate = false;';
         echo '</script>';
-        foreach($programme0 as &$item){
-            echo '<script language="javascript" type="text/javascript">';
+        foreach($programme0 as $item){
+	    $it = 0;
+	    foreach($item as $newitem)
+	    {
+		$item[$it] = $newitem;
+		$it = $it + 1;
+	    }
+	    echo '<script language="javascript" type="text/javascript">';
             echo 'function programm_bearbeitenD'.$i.'(){
                 if(deactivate == false)
                 {
@@ -185,7 +160,6 @@ else
             function programm_aktuell'.$i.'(){
                 deactivate = true;
                 var name = '.$item[1].';
-				
             }
             
             function programm_download'.$i.'(){
@@ -196,7 +170,7 @@ else
 				xhttp.onreadystatechange = function () {
 				if (this.readyState == 4 && this.status == 200) {
 					result = xhttp.responseText;
-					result = "account.php?dlink=result";
+					result = "account.php?dlink=" + result;
 					window.location.replace(result);
 				}
 				};

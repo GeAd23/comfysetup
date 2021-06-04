@@ -96,7 +96,8 @@ else
 	<br><p><center>Hier werden Fehler angezeigt, wenn Fehler aufgetreten sind beim Verarbeiten der Anfragen.</center></p><br><br>
 	<div id="infos">
 <?php
-	$infof = fopen("/var/www/data/infos.txt", "r");
+	$anzahl_names = -1;
+        $infof = fopen("/var/www/data/infos.txt", "r");
 	while(!feof($infof))
 	{
 		echo "<center>".fgets($infof)."</center>";
@@ -138,7 +139,7 @@ else
 	{
 		if($_GET["dlink"] != "None")
 		{
-			$downloadlink = "/installpy/".$_GET["dlink"]."exe";
+			$downloadlink = "/installpy/".$_GET["dlink"].".zip";
 			$downloadname = $_GET["dlink"];
 			echo '<a href='.$downloadlink.' alt='.$downloadname.' download><button class="button2" id="downloadb"><img src="./media/icons/download.svg" style="height: 20px; width: auto;">&nbsp;Download Windows Installer</button><a/>'; #CSS muss noch angepasst werden.
 		}
@@ -178,6 +179,7 @@ else
 	</div>
     <div id="prg_create">
 <?php
+	$anzahl_names = -1;
 	if(isset($_POST["pname"]))
 	{
 		$name = $_POST["pname"];
@@ -263,7 +265,8 @@ else
 	</div>
 	<div id="pro_create">
 <?php
-		if(isset($_POST["poname"]))
+	$anzahl_names = -1;
+	if(isset($_POST["poname"]))
         {
             $name = $_POST["poname"];
 			$db = new SQLite3("/var/www/data/MS1.db");
@@ -349,7 +352,7 @@ else
                 $db->close();
                 if($userdata["password_crypt"] == $pass)
                 {
-					if($npass == $nnpass && $npass != "" && $nnpass != "")
+				if($npass == $nnpass && $npass != "" && $nnpass != "")
 					{	
 						$pass = password_hash($npass);
 						$sqlarray = array($kname, $uname, $pass);

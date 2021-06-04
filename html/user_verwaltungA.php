@@ -111,58 +111,58 @@ else
 				$db = new SQLite3("/var/www/data/MS1.db");
 				$query = $db->prepare("SELECT * from users order by username;");
 				$userlogin = $query->execute();
-				$userdata = $userlogin->fetchArray();
-				$db->close();
+				$userdata = array($userlogin->fetchArray());
+			        $db->close();
 				$i = 1;
-				foreach($userdata as &$uuser)
+			        foreach($userdata as &$uuser)
 				{
-					echo '<div id="'.$uuser[2].'" class="userinhalt">';
-					echo '&nbsp;&nbsp;&nbsp;'.$uuser[1].'&nbsp;&nbsp;&nbsp;'.$uuser[2].'&nbsp;&nbsp;&nbsp;';
-					if($uuser[2] != "admin")
+					echo '<div id="'.$uuser["username"].'" class="userinhalt">';
+					echo '&nbsp;&nbsp;&nbsp;'.$uuser["name"].'&nbsp;&nbsp;&nbsp;'.$uuser["username"].'&nbsp;&nbsp;&nbsp;';
+					if($uuser["username"] != "admin")
 					{
-						if($uuser[4] == true)
+						if($uuser["admin"] == "true")
 						{	
-							echo '<label><input type="checkbox" name="adminA'.$i.'" value="'.$uuser[2].','.$uuser[4].' checked">Adminrechte erlaubt</label>&nbsp;&nbsp;&nbsp;';
+							echo '<label><input type="checkbox" name="adminA'.$i.'" value="'.$uuser["username"].','.$uuser["admin"].'" checked>Adminrechte erlaubt</label>&nbsp;&nbsp;&nbsp;';
 						}
-						elseif($uuser[4] == false)
+						elseif($uuser["admin"] == "false")
 						{
-							echo '<label><input type="checkbox" name="adminA'.$i.'" value="'.$uuser[2].','.$uuser[4].'">Adminrechte erlaubt</label>&nbsp;&nbsp;&nbsp;';
+							echo '<label><input type="checkbox" name="adminA'.$i.'" value="'.$uuser["username"].','.$uuser["admin"].'">Adminrechte erlaubt</label>&nbsp;&nbsp;&nbsp;';
 						}
-						if($uuser[5] == true)
+						if($uuser["active"] == "true")
 						{	
-							echo '<label><input type="checkbox" name="activeA'.$i.'" value="'.$uuser[2].','.$uuser[5].' checked">Benutzer aktiviert</label>&nbsp;&nbsp;&nbsp;';
+							echo '<label><input type="checkbox" name="activeA'.$i.'" value="'.$uuser["username"].','.$uuser["active"].'" checked>Benutzer aktiviert</label>&nbsp;&nbsp;&nbsp;';
 						}
-						elseif($uuser[5] == false)
+						elseif($uuser["active"] == "false")
 						{
-							echo '<label><input type="checkbox" name="activeA'.$i.'" value="'.$uuser[2].','.$uuser[5].'">Benutzer aktiviert</label>&nbsp;&nbsp;&nbsp;';
+							echo '<label><input type="checkbox" name="activeA'.$i.'" value="'.$uuser["username"].','.$uuser["active"].'">Benutzer aktiviert</label>&nbsp;&nbsp;&nbsp;';
 						}
-						echo '<label><input type="checkbox" name="loeschA'.$i.'" value="'.$uuser[2].'">Benutzer löschen</label>&nbsp;&nbsp;&nbsp;';
+						echo '<label><input type="checkbox" name="loeschA'.$i.'" value="'.$uuser["username"].'">Benutzer löschen</label>&nbsp;&nbsp;&nbsp;';
 					}
 					else
 					{
-						if($uuser[4] == true)
+						if($uuser["admin"] == "true")
 						{	
-							echo '<label><input type="checkbox" name="adminA'.$i.'" value="'.$uuser[2].','.$uuser[4].' checked disabled">Adminrechte erlaubt</label>&nbsp;&nbsp;&nbsp;';
+							echo '<label><input type="checkbox" name="adminA'.$i.'" value="'.$uuser["username"].','.$uuser["admin"].'" checked disabled>Adminrechte erlaubt</label>&nbsp;&nbsp;&nbsp;';
 						}
-						elseif($uuser[4] == false)
+						elseif($uuser["admin"] == "false")
 						{
-							echo '<label><input type="checkbox" name="adminA'.$i.'" value="'.$uuser[2].','.$uuser[4].' disabled">Adminrechte erlaubt</label>&nbsp;&nbsp;&nbsp;';
+							echo '<label><input type="checkbox" name="adminA'.$i.'" value="'.$uuser["username"].','.$uuser["admin"].'" disabled>Adminrechte erlaubt</label>&nbsp;&nbsp;&nbsp;';
 						}
-						if($uuser[5] == true)
+						if($uuser["active"] == "true")
 						{	
-							echo '<label><input type="checkbox" name="activeA'.$i.'" value="'.$uuser[2].','.$uuser[5].' checked disabled">Benutzer aktiviert</label>&nbsp;&nbsp;&nbsp;';
+							echo '<label><input type="checkbox" name="activeA'.$i.'" value="'.$uuser["username"].','.$uuser["active"].'" checked disabled>Benutzer aktiviert</label>&nbsp;&nbsp;&nbsp;';
 						}
-						elseif($uuser[5] == false)
+						elseif($uuser["active"] == "false")
 						{
-							echo '<label><input type="checkbox" name="activeA'.$i.'" value="'.$uuser[2].','.$uuser[5].' disabled">Benutzer aktiviert</label>&nbsp;&nbsp;&nbsp;';
+							echo '<label><input type="checkbox" name="activeA'.$i.'" value="'.$uuser["username"].','.$uuser["active"].'" disabled>Benutzer aktiviert</label>&nbsp;&nbsp;&nbsp;';
 						}
-						echo '<label><input type="checkbox" name="loeschA'.$i.'" value="'.$uuser[2].' disabled">Benutzer löschen</label>&nbsp;&nbsp;&nbsp;';
+						echo '<label><input type="checkbox" name="loeschA'.$i.'" value="'.$uuser["username"].'" disabled>Benutzer löschen</label>&nbsp;&nbsp;&nbsp;';
 					}
-					echo '<input style="visibility:hidden; width:0px; height:0px;" type="text" name="uuname'.$i.'" size="3" value='.$uuser[2].' required>';
+					echo '<input style="visibility:hidden; width:0px; height:0px;" type="text" name="uuname'.$i.'" size="3" value="'.$uuser["username"].'" required>';
 					echo '</div>';
 					$i = $i + 1;
 				}
-				echo '<br><input style="visibility:hidden" type="number" name="anz_uitems" size="5" value='.$i.' required>';
+				echo '<br><input style="visibility:hidden" type="number" name="anz_uitems" size="5" value="'.$i.'" required>';
 ?>
 				</div>
 			    <button class="button1" type="Submit"><img src="./media/icons/save.svg" style="height: 20px; width: auto;">&nbsp;Speichern</button>

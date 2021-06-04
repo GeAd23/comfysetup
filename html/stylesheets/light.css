@@ -97,8 +97,8 @@
         #info {
             position: absolute;
             transition: 0.5s;
-            height: 400px;
-            width: 1490px;
+            height: auto;
+            width: 80%;
             top: 7%;
             left: 3%;
             margin-left: 10px;
@@ -112,7 +112,8 @@
             height: 50%;
             top: 50%;
             position: relative;
-            margin: 0 auto;
+            margin: 0 40%;
+	    margin-top: 20%;
             border-radius: 5px;
         }
         #login form{

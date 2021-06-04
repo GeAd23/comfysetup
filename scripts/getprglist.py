@@ -11,7 +11,13 @@ def getprglist():
     prg_array = c.fetchall()
     db_conn.commit()
     db_conn.close()
-    print(prg_array);
-    return prg_array
+    prg_a = "";
+    for items in prg_array:
+        prg_a += "|";
+        for item in items:
+            prg_a += str(item) + ",";
+    prg_a = prg_a[:-1];
+    print(prg_a);
+    return prg_a
 
 getprglist()

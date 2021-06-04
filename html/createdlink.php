@@ -2,6 +2,47 @@
 error_reporting(E_ALL);
 ini_set('display_errors', true);
 session_start();
+
+	if(isset($_POST["acprg"]))
+        {
+                if($_POST["acprg"] == "true")
+                {
+                                if(isset($_POST["bcprg"]))
+                                {
+                                        $programm = $_POST["bcprg"];
+                                }
+                                $programm = explode(",", $programm);
+                                $lurl = "";
+                                foreach($programm as $item)
+                                {
+                                        $db = new SQLite3("/var/www/data/MS1.db");
+                                        $query = $db->prepare("Select * FROM programm WHERE name = '".$item."';");
+                                        $userlogin = $query->execute();
+                                        $userdata = $userlogin->fetchArray();
+                                        $db->close();
+                                        if(count($userdata) > 0)
+                                        {
+                                                $lurl = $lurl.substr($userdata["localurl"], 5).",";
+                                        }
+                                }
+                                if($lurl != "")
+                                {
+                                        $lurl = substr($lurl, 0, -1);
+                                        
+                                        $proarray = shell_exec((escapeshellcmd('/var/www/scripts/prepareTemplate.py '.$lurl)));
+                                        $name = substr($proarray, 0, -4);
+                                        echo $name;
+                                }
+                                else
+                                {
+                                        echo "None";
+                                }
+                		exit();
+		}
+        }
+
+
+
 if(!(isset($_SESSION["timer"])))
 {
     header("location: login1.php");
@@ -58,7 +99,7 @@ else
 				if($lurl != "")
 				{
 					$proarray = shell_exec((escapeshellcmd('/var/www/scripts/prepareTemplate.py '.$lurl)));
-					$name = substr($proarray, 0, -3);
+					$name = substr($proarray, 0, -4);
 					echo $name;
 				}
 				else
@@ -74,10 +115,10 @@ else
 		{
 				if(isset($_POST["bpro"]))
 				{
-					$programm = $_POST["bpro"];
+					$profil = $_POST["bpro"];
 				}
 				$db = new SQLite3("/var/www/data/MS1.db");
-				$query = $db->prepare("Select * from profile where name = '".$proinhalt."';");
+				$query = $db->prepare("Select * from profile where name = '".$profil."';");
 				$userlogin = $query->execute();
 				$userdata = $userlogin->fetchArray();
 				$db->close();
@@ -87,7 +128,7 @@ else
 					$db = new SQLite3("/var/www/data/MS1.db");
 					$query = $db->prepare("Select * from profile_programm where profile = '".$proid."';");
 					$userlogin = $query->execute();
-					$userdata = $userlogin->fetchArray();
+					$userdata = array($userlogin->fetchArray());
 					$db->close();
 					$prgliste = array();
 					foreach($userdata as $programm)
@@ -104,7 +145,7 @@ else
 					$db = new SQLite3("/var/www/data/MS1.db");
 					$query = $db->prepare($querystring);
 					$userlogin = $query->execute();
-					$userdata = $userlogin->fetchArray();
+					$userdata = array($userlogin->fetchArray());
 					$db->close();
 					$lurl = "";
 					foreach($userdata as $item)
@@ -117,44 +158,7 @@ else
 					$lurl = substr($lurl, 0, -1);
 					
 					$proarray = shell_exec((escapeshellcmd('/var/www/scripts/prepareTemplate.py '.$lurl)));
-					$name = substr($proarray, 0, -3);
-					echo $name;
-				}
-				else
-				{
-					echo "None";
-				}
-		}
-	}
-	
-	if(isset($_POST["acprg"]))
-	{
-		if($_POST["acprg"] == "true")
-		{
-				if(isset($_POST["bcprg"]))
-				{
-					$programm = $_POST["bcprg"];
-				}
-				$programm = explode(",", $programm);
-				$lurl = "";
-				foreach($programm as $item)
-				{
-					$db = new SQLite3("/var/www/data/MS1.db");
-					$query = $db->prepare("Select * FROM programm WHERE name = '".$item."';");
-					$userlogin = $query->execute();
-					$userdata = $userlogin->fetchArray();
-					$db->close();
-					if(count($userdata) > 0)
-					{
-						$lurl = $lurl.substr($userdata["localurl"], 5).",";
-					}
-				}
-				if($lurl != "")
-				{
-					$lurl = substr($lurl, 0, -1);
-					
-					$proarray = shell_exec((escapeshellcmd('/var/www/scripts/prepareTemplate.py '.$lurl)));
-					$name = substr($proarray, 0, -3);
+					$name = substr($proarray, 0, -4);
 					echo $name;
 				}
 				else

@@ -41,26 +41,23 @@ class prepareTemplate:
         tfile.write(inhalttext);
         tfile.close();
     
-    def create_exe(self, name):
-        #Windows
-        #created = subprocess.call(["cmd", "/c", "pyinstaller", "--noconfirm", "--onefile", "--console", "--icon", "C://Users//werner_j//Downloads//software_install.ico", "--distpath", "C://Users//werner_j//Desktop", "C://Users//werner_j//Desktop//" + name]);
-        #Linux
-        created = subprocess.call("pyinstaller --noconfirm --onefile --console --icon /var/www/scripts/software_install.ico --distpath /var/www/html/installpy/" + name, shell=True);        
+    def create_zip(self, name):
+        name = name[:-3];
+        os.mkdir("/var/www/html/installpy/" + name);
+        shutil.copy2("/var/www/scripts/software_install.ico","/var/www/html/installpy/" + name + "/");
+        shutil.copy2("/var/www/scripts/python3.exe","/var/www/html/installpy/" + name + "/");
+        shutil.copy2("/var/www/scripts/7zip.exe","/var/www/html/installpy/" + name + "/");
+        #shutil.copy2("/var/www/scripts/start_install.exe","/var/www/html/installpy/" + name + "/");
+        shutil.copy2("/var/www/html/installpy/" + name + ".py","/var/www/html/installpy/" + name + "/");
+        created = subprocess.call("zip -q -9 -r -j -D /var/www/html/installpy/" + name + " /var/www/html/installpy/" + name + "/*", shell=True);
+        shutil.rmtree("/var/www/html/installpy/" + name, ignore_errors=True);
         if(created == 0):
-            os.remove("/var/www/html/installpy/" + name);
-            print("Das dynamische Template wurde erfolgreich erzeugt.\n");
+            os.remove("/var/www/html/installpy/" + name + ".py");
+            #print("Das dynamische Template wurde erfolgreich erzeugt.\n"); #Debug
+            pass;
         else:
-            print("Die Erzeugung ist fehlgeschlagen. Informieren sie ihren Administrator.\n");
-        name1 = name.split(".");
-        name1 = name1[0];
-        #Windows
-        #loeschung = subprocess.call(["cmd", "/c", "del", "/Q", "C:\\Users\\werner_j\\Desktop\\" + name1 + ".spec"]);
-        #loeschung = subprocess.call(["cmd", "/c", "rmdir", "/S", "/Q", "C:\\Users\\werner_j\\Desktop\\build"]);
-        #loeschung = subprocess.call(["cmd", "/c", "rmdir", "/S", "/Q", "C:\\Users\\werner_j\\Desktop\\__pycache__"]);
-        #Linux
-        loeschung = subprocess.call("sudo rm -rf /var/www/html/installpy/" + name1 + ".spec", shell=True);
-        loeschung = subprocess.call("sudo rm -rf /var/www/html/installpy/build/", shell=True);
-        loeschung = subprocess.call("sudo rm -rf /var/www/html/installpy/__pycache__/", shell=True);        
+            #print("Die Erzeugung ist fehlgeschlagen. Informieren sie ihren Administrator.\n"); #Debug
+            pass;
 
     def get_installerName(self, name):
         print(name);
@@ -75,11 +72,11 @@ programm = str(programm);
 createdynTemplate1 = prepareTemplate(); 
 nametemplate = createdynTemplate1.get_randomized_name(20);
 
-print(nametemplate);
+#print(nametemplate); #Debug
 createdynTemplate1.copy_template(nametemplate);
 createdynTemplate1.setautoinstall('[["Ppfad 1", "/S"], ["Ppfad 1", "/S"]]');
 createdynTemplate1.setsoftware(programm);
 createdynTemplate1.prepare_template("/var/www/html/installpy/" + nametemplate);
 #Die dynamische Template py zu exe umwandeln
-createdynTemplate1.create_exe(nametemplate);
+createdynTemplate1.create_zip(nametemplate);
 createdynTemplate1.get_installerName(nametemplate);

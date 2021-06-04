@@ -109,62 +109,36 @@ else
 				<div id="programme">
 <?php
 				$proarray = shell_exec((escapeshellcmd('/var/www/scripts/getprglist.py')));
-				$programme = explode(",",$proarray);
+				$programme = explode(",", $proarray);
 				$programme0 = array();
-				$i=0;
-				$j=0;
+				$i = 0;
+				$j = 0;
 				foreach($programme as &$prog)
 				{
-					$pro1 = explode("[(",$prog);
-							if(count($pro1) > 1)
-							{
-									$programme0[$j][$i] = $pro1[1];
+					if(strpos($prog,"|") !== false)
+                			{
+					$pro1 = explode("|", $prog)[1];
+					$j = $j + 1;
+					$programme0[$j][$i] = $pro1;
 					}
-					if(strpos($prog,"')]") != "")
-							{       
-									$pro1 = explode("')]",$prog);
-									$programme0[$j][$i] = $pro1[0];
-							}
-					elseif(strpos($prog,")]") != "")
-					{	
-						$pro1 = explode(")]",$prog);
-						$programme0[$j][$i] = $pro1[0];
-					}
-					elseif(strpos($prog,"[('") != "") 
-							{
-									$pro1 = explode("[('",$prog);
-									$programme0[$j][$i] = $pro1[1];
-							}
-					elseif(strpos($prog,"[(") != "") 
-						{
-									$pro1 = explode("[(",$prog);
-									$programme0[$j][$i] = $pro1[1];
-						echo $pro1[1];
-							}
-					elseif(strpos($prog,")") != "") 
-							{
-									$pro1 = explode(")",$prog);
-									$programme0[$j][$i] = $pro1[0];
-									$j = $j+1;
-							}
-					elseif(strpos($prog,"(") != "") 
-							{
-									$pro1 = explode("(",$prog);
-									$programme0[$j][$i] = $pro1[1];
-							}
-					if(strpos($prog,"'") != "")
+					else
 					{
-						$pro1 = explode("'",$prog);
-						$programme0[$j][$i] = $pro1[1];
+					$programme0[$j][$i] = $prog;
 					}
-
-					$i = $i+1;
+					$i = $i + 1;
 				}
+				$i=0;
+				$j=0;
 				unset($pro1);
 				unset($programme);
-				$i = 1;
-				foreach($programme0 as &$item)
+        			foreach($programme0 as $item)
 				{
+	    				$it = 0;
+	    				foreach($item as $newitem)
+	    				{
+						$item[$it] = $newitem;
+						$it = $it + 1;
+	    				}
 					$time = date("d.m.Y G:i:s",intval($item[7]));
 					echo '<div id="'.$item[1].'" class="prginhalt">';
 					echo '&nbsp;&nbsp;&nbsp;<input type="checkbox" name="prg'.$i.'" value="'.$item[0].'">&nbsp;';
