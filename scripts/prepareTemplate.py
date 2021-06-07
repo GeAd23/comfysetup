@@ -47,9 +47,11 @@ class prepareTemplate:
         shutil.copy2("/var/www/scripts/software_install.ico","/var/www/html/installpy/" + name + "/");
         shutil.copy2("/var/www/scripts/python3.exe","/var/www/html/installpy/" + name + "/");
         shutil.copy2("/var/www/scripts/7zip.exe","/var/www/html/installpy/" + name + "/");
-        #shutil.copy2("/var/www/scripts/start_install.exe","/var/www/html/installpy/" + name + "/");
+        shutil.copy2("/var/www/scripts/python386.exe","/var/www/html/installpy/" + name + "/");
+        shutil.copy2("/var/www/scripts/7zip86.exe","/var/www/html/installpy/" + name + "/");
+        shutil.copy2("/var/www/scripts/start_install.exe","/var/www/html/installpy/" + name + "/");
         shutil.copy2("/var/www/html/installpy/" + name + ".py","/var/www/html/installpy/" + name + "/");
-        created = subprocess.call("zip -q -9 -r -j -D /var/www/html/installpy/" + name + " /var/www/html/installpy/" + name + "/*", shell=True);
+        created = subprocess.call("cd /var/www/html/installpy/ && zip -q -9 -r -D /var/www/html/installpy/" + name + " ./" + name + "/*", shell=True);
         shutil.rmtree("/var/www/html/installpy/" + name, ignore_errors=True);
         if(created == 0):
             os.remove("/var/www/html/installpy/" + name + ".py");

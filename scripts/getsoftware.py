@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 import sqlite3
 import sys
-import json
 
-arg_list=sys.argv[1:]
+arg_list=sys.argv[1]
 db_conn=sqlite3.connect('./data/MS1.db', timeout=20)
-arg_list=json.dump(arg_list)
+arg_list = arg_list.split(",")
 
 
 def getSoftware(arg_list):

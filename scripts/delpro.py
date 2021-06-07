@@ -9,12 +9,7 @@ def delpro(name):
     c = conn.cursor()
     c.execute(f"""SELECT ID FROM profil WHERE name='{name}'""")
     id = c.fetchone()
-    c.execute(f"""DELETE * FROM user_profile WHERE user = '{id}'""")
-    c.execute(f"""DELETE * FROM profil_programm WHERE profile = '{id}'""")
-    c.execute(f"""DELETE * FROM profile WHERE ID = '{id}' LIMIT 1""")
+    c.execute(f"""DELETE * FROM profil_programm WHERE user = '{id}'""")
+    c.execute(f"""DELETE * FROM profil WHERE ID = '{id}' """)
     conn.commit()
     conn.close()
-    print(prg_name)
-    return prg_name
-
-delpro(name)

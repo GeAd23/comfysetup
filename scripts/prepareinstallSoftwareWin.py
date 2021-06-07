@@ -145,4 +145,3 @@ installAssistent1.startinstallmanager();
 
 time.sleep(20);
 os._exit(0);
- 
