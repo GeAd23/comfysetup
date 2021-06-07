@@ -32,7 +32,7 @@ class dynTemplate:
 
 
             try:
-                ftp = ftplib.FTP("localhost", "progdown", "1234567890");
+                ftp = ftplib.FTP("localhost", "downftpexe", "msp2021");
                 #ftp = ftplib.FTP("speedtest.tele2.net"); #Debug
                 self.log = ftp.login();
                 print(self.log + "\n");
