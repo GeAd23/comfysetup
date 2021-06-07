@@ -47,10 +47,10 @@ else
 	<button class="button1" onclick="location.replace(\'prolist.php\')" id="'.$proinhalt.'">
     <img src="./media/icons/back.svg" style="height: 20px; width: auto;">&nbsp;Zurück
     </button>&nbsp;&nbsp;&nbsp;
-	<button onclick="programm_aktuell1()" id="'.$proinhalt.'">
+	<button class="button1" onclick="programm_aktuell1()" id="'.$proinhalt.'">
     <img src="./media/icons/update.svg" style="height: 20px; width: auto;">&nbsp;Aktuell
     </button>
-	<button onclick="programm_download1()" id="'.$proinhalt.'">
+	<button class="button1" onclick="programm_download1()" id="'.$proinhalt.'">
     <img src="./media/icons/download.svg" style="height: 20px; width: auto;">&nbsp;Herunterladen
     </button><br><br><br>';
 	echo '<script language="javascript" type="text/javascript">';
