@@ -84,7 +84,7 @@ else
     </div>
 
     <div id="side_bar" class="sidebar">
-        <span onclick='openNav(); removeSide();'><img src="https://img.icons8.com/ios-filled/50/ffffff/menu--v1.png" alt="Menu"></span>
+        <span onclick='openNav();'><img src="https://img.icons8.com/ios-filled/50/ffffff/menu--v1.png" alt="Menu"></span>
     </div>
     
     <div id="top_bar" class="topbar">
