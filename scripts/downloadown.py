@@ -11,7 +11,7 @@ def download(name, urls: list):
             http = urllib3.PoolManager()
             r = http.request('GET', url, preload_content=False)
 
-            with open('/usb/data1/'+name, 'w+') as out:
+            with open('/usb/data1/'+name+url[:4], 'w+') as out:
                 while True:
                     data = r.read(4096)
                     if not data:
