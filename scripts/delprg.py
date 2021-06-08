@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 import sqlite3 as sql
-import json
 import sys
 
 name=sys.argv[1]
@@ -17,4 +16,5 @@ def delprg(prg_name):
     conn.close()
     print(prg_name)
     return prg_name
+
 delprg(name)

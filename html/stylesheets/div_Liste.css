@@ -1,30 +1,38 @@
 .programm{
     border-radius: 20px;
-    border-width: 3px;
+    border-width: 1px;
     border-style: solid;
     height: auto;
-    width: 870px;
+    width: auto;
     margin: 0 auto;
     text-align: left;
     margin-bottom: 6px;
     margin-top: 3px;
+    background-color: #121212;
+    opacity: 60%;
+    color: white;
+    border-color: #818181;
 }
 
 .profile{
     border-radius: 20px;
-    border-width: 3px;
+    border-width: 1px;
     border-style: solid;
     height: auto;
-    width: 790px;
+    width: auto;
     margin: 0 auto;
     text-align: left;
     margin-bottom: 6px;
     margin-top: 3px;
+    background-color: #121212;
+    opacity: 60%;
+    color: white;
+    border-color: #818181;
 }
 
 .proinhalt{
     border-radius: 20px;
-    border-width: 3px;
+    border-width: 1px;
     border-style: solid;
     height: auto;
     width: 530px;
@@ -36,7 +44,7 @@
 
 .prginhalt{
     border-radius: 20px;
-    border-width: 3px;
+    border-width: 1px;
     border-style: solid;
     height: auto;
     width: 620px;
@@ -44,18 +52,26 @@
     text-align: left;
     margin-bottom: 6px;
     margin-top: 3px;
+    background-color: #121212;
+    opacity: 60%;
+    color: white;
+    border-color: #818181;
 }
 
 .userinhalt{
     border-radius: 20px;
-    border-width: 3px;
+    border-width: 1px;
     border-style: solid;
     height: auto;
-    width: 730px;
+    width: 1230px;
     margin: 0 auto;
     text-align: left;
     margin-bottom: 6px;
-    margin-top: 3px;
+    margin-top: 1px;
+    background-color: #121212;
+    opacity: 60%;
+    color: white;
+    border-color: #818181;
 }
 
 #inhalt{
@@ -72,4 +88,66 @@
 .pbild{
     width: 40px;
     height: 40px;
+}
+
+.padd{
+    border-radius: 20px;
+    border-width: 1px;
+    border-style: solid;
+    height: auto;
+    width: auto;
+    margin: 0 auto;
+    text-align: left;
+    margin-bottom: 6px;
+    margin-top: 1px;
+    background-color: #121212;
+    opacity: 60%;
+    color: white;
+    border-color: #818181;
+}
+
+.padd .poname{
+    border: 1px solid;
+    border-radius: 5px;
+    font-size: 20px;
+    width: 50%;
+    height: 40px;
+    margin: 10px 0;
+    background-color: #121212;
+    border-color:#818181;
+    color: #818181;
+}
+
+.padd p{
+    color:white;
+    border-width: 1px;
+    border-radius: 5px;
+    background-color: #121212;
+    opacity: 60%;
+}
+
+.button1{
+	background-color: #a23d74;
+	border-width: 1px;
+    border-radius: 5px;
+	color: white;
+	padding: 8px 10px;
+	font-size: 16px;
+	cursor: pointer;
+    align-items: right;
+    border-color:#818181
+}
+
+.button1 img{
+    -webkit-filter: invert(100);
+}
+
+.button2{
+	background-color: #489097;
+	border: none;
+	color: #880000;
+	padding: 8px 10px;
+	font-size: 16px;
+	cursor: pointer;
+	float: right;
 }

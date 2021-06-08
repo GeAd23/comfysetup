@@ -44,14 +44,14 @@ else
 	}
 
 	echo '<div id="proinhalt">
-	<button onclick="window.location.replace("prolist.php")" id="'.$proinhalt.'">
-    Zurück
+	<button class="button1" onclick="location.replace(\'prolist.php\')" id="'.$proinhalt.'">
+    <img src="./media/icons/back.svg" style="height: 20px; width: auto;">&nbsp;Zurück
     </button>&nbsp;&nbsp;&nbsp;
 	<button onclick="programm_aktuell1()" id="'.$proinhalt.'">
-    Aktuell
+    <img src="./media/icons/update.svg" style="height: 20px; width: auto;">&nbsp;Aktuell
     </button>
 	<button onclick="programm_download1()" id="'.$proinhalt.'">
-    Herunterladen
+    <img src="./media/icons/download.svg" style="height: 20px; width: auto;">&nbsp;Herunterladen
     </button><br><br><br>';
 	echo '<script language="javascript" type="text/javascript">';
 	echo '	function programm_aktuell'.'1'.'(){
@@ -68,7 +68,7 @@ else
 				xhttp.onreadystatechange = function () {
 				if (this.readyState == 4 && this.status == 200) {
 					result = xhttp.responseText;
-					result = "account.php?dlink=result";
+					result = "account.php?dlink=" + result;
 					window.location.replace(result);
 				}
 				};
@@ -78,22 +78,22 @@ else
             }';
 	echo '</script>';
 	
-	$db = new SQLite3("/var/www/data/MS1.db");
+    $db = new SQLite3("/var/www/data/MS1.db");
     $query = $db->prepare("Select * from profile where name = '".$proinhalt."';");
     $userlogin = $query->execute();
-    $userdata = $userlogin->fetchArray();
+    $userdata = $userlogin->fetchArray(SQLITE3_ASSOC);
     $db->close();
 	$proid = $userdata["PID"];
 	echo '&nbsp;&nbsp;'.$userdata["name"].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.date("d.m.Y G:i:s",intval($userdata["changedate"])).'<br><br><br><br>';
-	$db = new SQLite3("/var/www/data/MS1.db");
-    $query = $db->prepare("Select * from profile_programm where profile = '".$proid."';");
+    $db = new SQLite3("/var/www/data/MS1.db");
+    $query = $db->prepare("Select programm from profile_programm where profile = '".$proid."';");
     $userlogin = $query->execute();
-    $userdata = $userlogin->fetchArray();
+    $userdata = $userlogin->fetchArray(SQLITE3_ASSOC);
     $db->close();
 	$prgliste = array();
 	foreach($userdata as $programm)
 	{
-		$prgliste[] = $programm["programm"];
+		$prgliste[] = $programm;
 	}
 	$querystring = "Select * from programm where ID in (";
 	foreach($prgliste as $prgids)
@@ -102,21 +102,21 @@ else
 	}
 	$querystring = substr($querystring, 0, -1);
 	$querystring = $querystring.") ORDER by name;";
-	$db = new SQLite3("/var/www/data/MS1.db");
+    $db = new SQLite3("/var/www/data/MS1.db");
     $query = $db->prepare($querystring);
     $userlogin = $query->execute();
-    $userdata = $userlogin->fetchArray();
+    $userdata = array($userlogin->fetchArray(SQLITE3_ASSOC));
     $db->close();
 	foreach($userdata as &$item)
 	{
-		echo '<div id="'.$item[1].'" class="proinhalt">
+		echo '<div id="'.$item["name"].'" class="proinhalt">
 				<p id="inhalt">
-				<img src="'.$item[4].'" class="pbild">&nbsp;&nbsp;&nbsp;<b>'.$item[1].'</b>&nbsp;&nbsp;&nbsp;'.date("d.m.Y G:i:s",intval($item[7])).'&nbsp;&nbsp;&nbsp;
+				<img src="'.$item["program_bild"].'" class="pbild">&nbsp;&nbsp;&nbsp;<b>'.$item["name"].'</b>&nbsp;&nbsp;&nbsp;'.date("d.m.Y G:i:s",intval($item["last_update"])).'&nbsp;&nbsp;&nbsp;
 				</p>
 				</div>';
 	}
-	echo '<br><br><button onclick="window.location.replace("prolist.php")" id="'.$proinhalt.'">
-		  Zurück
+	echo '<br><br><button class="button1" onclick="location.replace(\'prolist.php\')" id="'.$proinhalt.'">
+		  <img src="./media/icons/back.svg" style="height: 20px; width: auto;">&nbsp;Zurück
 		  </button>&nbsp;';
 echo '</div>';
 ?>

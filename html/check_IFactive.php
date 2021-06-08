@@ -1,7 +1,6 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', true);
-session_start();
 if(isset($_SESSION["timer"]))
 {
     echo '<br><script type="text/javascript">';

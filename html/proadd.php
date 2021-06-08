@@ -63,29 +63,29 @@ else
     <div id="side_nav" class="sidenav">
         <!--Inhalt der Navigationsleiste-->
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="./index.php">Home</a><br>
-        <a>Konto</a><br>
-            <a class="haltdeinefressejulien" href="prglist.php">Programm Liste</a><br>
-            <a class="haltdeinefressejulien" href="prolist.php">Profil Liste</a><br>
-            <a class="haltdeinefressejulien" href="proadd.php">Profil erstellen</a><br>
-            <a class="haltdeinefressejulien" href="prgadd.php">Programm hinzufügen</a><br>
-            <a class="haltdeinefressejulien" href="kontoch.php">Konto bearbeiten</a><br>
+        <a href="./index.php"><img src="./media/icons/home.svg" style="height: 20px; width: auto;">&nbsp;Home</a><br>
+        <a><img src="./media/icons/konto.svg" style="height: 20px; width: auto;">&nbsp;Konto</a><br>
+            <a class="submenu" href="prglist.php"><img src="./media/icons/list.svg" style="height: 20px; width: auto;">&nbsp;Programm Liste</a><br>
+            <a class="submenu" href="prolist.php"><img src="./media/icons/list.svg" style="height: 20px; width: auto;">&nbsp;Profil Liste</a><br>
+            <a class="submenu" href="proadd.php"><img src="./media/icons/add.svg" style="height: 20px; width: auto;">&nbsp;Profil erstellen</a><br>
+            <a class="submenu" href="prgadd.php"><img src="./media/icons/add.svg" style="height: 20px; width: auto;">&nbsp;Programm hinzufügen</a><br>
+            <a class="submenu" href="kontoch.php"><img src="./media/icons/edit.svg" style="height: 20px; width: auto;">&nbsp;Konto bearbeiten</a><br>
 			<?php
 			if($_SESSION["admin"] == true)
 			{
-				echo '<a class="haltdeinefressejulien" href="user_verwaltungA.php">Benutzer verwalten</a><br>';
+				echo '<a class="submenu" href="user_verwaltungA.php"><img src="./media/icons/edit.svg" style="height: 20px; width: auto;">&nbsp;Benutzer verwalten</a><br>';
 			}
 			?>
-        <a href="./about.php">About</a><br>
-        <a href="./help.php">Help</a>
+        <a href="./about.php"><img src="./media/icons/über.svg" style="height: 20px; width: auto;">&nbsp;About</a><br>
+        <a href="./help.php"><img src="./media/icons/help.svg" style="height: 20px; width: auto;">&nbsp;Help</a><br>
         <?php
         if(isset($_SESSION["timer"]))
             {
-                echo '<a class="logout" href="logout.php">Logout</a>';
+                echo '<a class="logout" href="logout.php"><img src="./media/icons/logout.svg" style="height: 20px; width: auto;">&nbsp;Logout</a>';
             }
             else
             {
-                echo '<a class="log_in" href="login1.php">Login</a>';
+                echo '<a class="log_in" href="login1.php"><img src="./media/icons/login.svg" style="height: 20px; width: auto;">&nbsp;Login</a>';
             }
         ?> 
     </div>
@@ -101,70 +101,44 @@ else
 	<div id="info">
 		<div id="proadd">
 			<form action="account.php" method="post" enctype="multipart/form-data">
-			    <input id="addbutton" type="submit" value="Speichern">
+			    <button class="button1" type="Submit"><img src="./media/icons/save.svg" style="height: 20px; width: auto;">&nbsp;Speichern</button>
 			    <div id="padd"><br>
-			    <input type="text" id="poname" name="poname" size="30" placeholder="Profilname" required><br><br><br>
+			    <input type="text" class="poname" id="poname" name="poname" size="30" placeholder="Profilname" required><br><br><br>
 			    <br><br><br>
 				<p id="erklärung_auswahl">Wählen sie alle Programme aus, die zu diesem Profil hinzugefügt werden sollen.</p><br><br>
 				<div id="programme">
 <?php
 				$proarray = shell_exec((escapeshellcmd('/var/www/scripts/getprglist.py')));
-				$programme = explode(",",$proarray);
+				$programme = explode(",", $proarray);
 				$programme0 = array();
-				$i=0;
-				$j=0;
+				$i = 0;
+				$j = 0;
 				foreach($programme as &$prog)
 				{
-					$pro1 = explode("[(",$prog);
-							if(count($pro1) > 1)
-							{
-									$programme0[$j][$i] = $pro1[1];
+					if(strpos($prog,"|") !== false)
+                			{
+					$pro1 = explode("|", $prog)[1];
+					$j = $j + 1;
+					$programme0[$j][$i] = $pro1;
 					}
-					if(strpos($prog,"')]") != "")
-							{       
-									$pro1 = explode("')]",$prog);
-									$programme0[$j][$i] = $pro1[0];
-							}
-					elseif(strpos($prog,")]") != "")
-					{	
-						$pro1 = explode(")]",$prog);
-						$programme0[$j][$i] = $pro1[0];
-					}
-					elseif(strpos($prog,"[('") != "") 
-							{
-									$pro1 = explode("[('",$prog);
-									$programme0[$j][$i] = $pro1[1];
-							}
-					elseif(strpos($prog,"[(") != "") 
-						{
-									$pro1 = explode("[(",$prog);
-									$programme0[$j][$i] = $pro1[1];
-						echo $pro1[1];
-							}
-					elseif(strpos($prog,")") != "") 
-							{
-									$pro1 = explode(")",$prog);
-									$programme0[$j][$i] = $pro1[0];
-									$j = $j+1;
-							}
-					elseif(strpos($prog,"(") != "") 
-							{
-									$pro1 = explode("(",$prog);
-									$programme0[$j][$i] = $pro1[1];
-							}
-					if(strpos($prog,"'") != "")
+					else
 					{
-						$pro1 = explode("'",$prog);
-						$programme0[$j][$i] = $pro1[1];
+					$programme0[$j][$i] = $prog;
 					}
-
-					$i = $i+1;
+					$i = $i + 1;
 				}
+				$i=0;
+				$j=0;
 				unset($pro1);
 				unset($programme);
-				$i = 1;
-				foreach($programme0 as &$item)
+        			foreach($programme0 as $item)
 				{
+	    				$it = 0;
+	    				foreach($item as $newitem)
+	    				{
+						$item[$it] = $newitem;
+						$it = $it + 1;
+	    				}
 					$time = date("d.m.Y G:i:s",intval($item[7]));
 					echo '<div id="'.$item[1].'" class="prginhalt">';
 					echo '&nbsp;&nbsp;&nbsp;<input type="checkbox" name="prg'.$i.'" value="'.$item[0].'">&nbsp;';
@@ -199,7 +173,7 @@ else
 ?>
 				</div>
 			    <br><br></div>
-			    <input id="addbutton" type="submit" value="Speichern">
+			    <button class="button1" type="Submit"><img src="./media/icons/save.svg" style="height: 20px; width: auto;">&nbsp;Speichern</button>
 			</form>
 		</div>
 	</div>

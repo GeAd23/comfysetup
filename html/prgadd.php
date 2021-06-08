@@ -62,29 +62,29 @@ else
     <div id="side_nav" class="sidenav">
         <!--Inhalt der Navigationsleiste-->
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="./index.php">Home</a><br>
-        <a>Konto</a><br>
-            <a class="haltdeinefressejulien" href="prglist.php">Programm Liste</a><br>
-            <a class="haltdeinefressejulien" href="prolist.php">Profil Liste</a><br>
-            <a class="haltdeinefressejulien" href="proadd.php">Profil erstellen</a><br>
-            <a class="haltdeinefressejulien" href="prgadd.php">Programm hinzufügen</a><br>
-            <a class="haltdeinefressejulien" href="kontoch.php">Konto bearbeiten</a><br>
+        <a href="./index.php"><img src="./media/icons/home.svg" style="height: 20px; width: auto;">&nbsp;Home</a><br>
+        <a><img src="./media/icons/konto.svg" style="height: 20px; width: auto;">&nbsp;Konto</a><br>
+            <a class="submenu" href="prglist.php"><img src="./media/icons/list.svg" style="height: 20px; width: auto;">&nbsp;Programm Liste</a><br>
+            <a class="submenu" href="prolist.php"><img src="./media/icons/list.svg" style="height: 20px; width: auto;">&nbsp;Profil Liste</a><br>
+            <a class="submenu" href="proadd.php"><img src="./media/icons/add.svg" style="height: 20px; width: auto;">&nbsp;Profil erstellen</a><br>
+            <a class="submenu" href="prgadd.php"><img src="./media/icons/add.svg" style="height: 20px; width: auto;">&nbsp;Programm hinzufügen</a><br>
+            <a class="submenu" href="kontoch.php"><img src="./media/icons/edit.svg" style="height: 20px; width: auto;">&nbsp;Konto bearbeiten</a><br>
 			<?php
 			if($_SESSION["admin"] == true)
 			{
-				echo '<a class="haltdeinefressejulien" href="user_verwaltungA.php">Benutzer verwalten</a><br>';
+				echo '<a class="submenu" href="user_verwaltungA.php"><img src="./media/icons/edit.svg" style="height: 20px; width: auto;">&nbsp;Benutzer verwalten</a><br>';
 			}
 			?>
-        <a href="./about.php">About</a><br>
-        <a href="./help.php">Help</a>
+        <a href="./about.php"><img src="./media/icons/über.svg" style="height: 20px; width: auto;">&nbsp;About</a><br>
+        <a href="./help.php"><img src="./media/icons/help.svg" style="height: 20px; width: auto;">&nbsp;Help</a><br>
         <?php
         if(isset($_SESSION["timer"]))
             {
-                echo '<a class="logout" href="logout.php">Logout</a>';
+                echo '<a class="logout" href="logout.php"><img src="./media/icons/logout.svg" style="height: 20px; width: auto;">&nbsp;Logout</a>';
             }
             else
             {
-                echo '<a class="log_in" href="login1.php">Login</a>';
+                echo '<a class="log_in" href="login1.php"><img src="./media/icons/login.svg" style="height: 20px; width: auto;">&nbsp;Login</a>';
             }
         ?> 
     </div>
@@ -100,8 +100,8 @@ else
 	<div id="info">
 		<div id="prgadd">
 			<form action="account.php" method="post" enctype="multipart/form-data">
-			    <input id="addbutton" type="submit" value="Speichern">
-			    <div id="padd"><br>
+			    <button class="button1" type="Submit"><img src="./media/icons/save.svg" style="height: 20px; width: auto;">&nbsp;Speichern</button>
+			    <div id="padd" class="padd"><br>
 			    <input type="text" id="pname" name="pname" size="30" placeholder="Programmname" required><br><br><br>
 			    <label>Wählen Sie eine Programmbilddatei (*.png, *.jpg, *.jpeg, *.ico) von Ihrem Rechner aus.
 				<input id="pico" name="bilddatei" type="file" size="30" accept=".jpg, .jpeg, .png, .ico" required> 
@@ -128,17 +128,17 @@ else
 				Ist ein Standard Programm von "comfysetup" (Nur kleinere Dateien)
 			    </label>
 			    <br><br></div>
-			    <input id="addbutton" type="submit" value="Speichern">
+			    <button class="button1" type="Submit"><img src="./media/icons/save.svg" style="height: 20px; width: auto;">&nbsp;Speichern</button>
 			</form>
-			<script language="javascript" type="text/javascript">
-                            var upico = document.getElementById("pico");
-                            upico.onchange = function(){
-                                if(this.files[0].size > 6291456){
-                                    alert("Das Bild ist zu groß!");
-                                    this.value = "";
-                                }
-                            }
-                        </script>
+				<script language="javascript" type="text/javascript">
+                    var upico = document.getElementById("pico");
+                    upico.onchange = function(){
+                        if(this.files[0].size > 6291456){
+                            alert("Das ausgewählte Icon-Bild ist zu groß!");
+                            this.value = "";
+                        }
+                    }
+                </script>
 		</div>
 	</div>
 

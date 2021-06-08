@@ -87,7 +87,7 @@
             margin-left: 50px;
         }
         
-        .sidenav .haltdeinefressejulien{
+        .sidenav .submenu{
             color: #818181;
             font-size: 15px;
             text-indent: 10px;
@@ -97,10 +97,12 @@
         #info {
             position: absolute;
             transition: 0.5s;
-            height: 400px;
-            width: 1490px;
+            height: auto;
+            width: 80%;
             top: 7%;
             left: 3%;
+            margin-left: 10px;
+            margin-top: 10px;
         }
         
         #login{
@@ -110,7 +112,8 @@
             height: 50%;
             top: 50%;
             position: relative;
-            margin: 0 auto;
+            margin: 0 40%;
+	    margin-top: 20%;
             border-radius: 5px;
         }
         #login form{
@@ -152,10 +155,7 @@
         }
         
         #usrprglist{
-            background-color: #121212;
-            opacity: 60%;
             border-radius: 5px;
-             
         }
             
 
