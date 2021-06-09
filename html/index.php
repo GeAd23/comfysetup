@@ -38,7 +38,8 @@ session_start()
 	    if(isset($_SESSION["timer"]))
             {
                 echo '<a class="logout" href="logout.php"><img src="./media/icons/logout.svg" style="height: 20px; width: auto;">&nbsp;Logout</a>';
-            }
+                include "check_IFactive.php";
+	    }
             else
             {
                 echo '<a class="log_in" href="login1.php"><img src="./media/icons/login.svg" style="height: 20px; width: auto;">&nbsp;Login</a>';
