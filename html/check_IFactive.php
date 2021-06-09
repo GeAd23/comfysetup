@@ -21,6 +21,7 @@ if(isset($_SESSION["timer"]))
 			   xhttp.onreadystatechange = function () {
 			   if (this.readyState == 4 && this.status == 200) {
 				  result = xhttp.responseText;
+				  location.reload();
 			   }
 			   };
 			   xhttp.open("POST", "logout.php", true);

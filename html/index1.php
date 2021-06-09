@@ -139,7 +139,6 @@
 
 		  start_download();';
 	echo '</script>';
-	include "check_IFactive.php";
 	echo '</div>';
 	echo '</center>';
 	echo '<div id="errors">';
