@@ -4,10 +4,13 @@
         font-family: 'PT Mono', monospace;
     }
     body{
+        background-attachment: fixed;
         background-image: url("../media/background.png");
+        background-repeat: no-repeat;
+        background-size: cover;
     }
         .sidebar{
-            position: absolute;
+            position: fixed;
             left: 0%;
             top: 0%;
             height:100%;
@@ -160,7 +163,26 @@
         #usrprglist{
             border-radius: 5px;
         }
-            
+
+        #about{
+            opacity:100%;
+            background-color: rgba(10,10,10, 0.5);
+            position: relative;
+            width:1200px;
+            color: white;
+            padding-bottom: 20px;
+            padding-top: 20px;
+
+        }
+
+        #about img{
+            margin-left: 20px;
+        }
+        
+        #about p{
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
 
 @media all and (max-width: 450px){
     #content{
